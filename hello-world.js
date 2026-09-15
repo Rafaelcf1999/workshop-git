@@ -1,4 +1,6 @@
-let diasemana = new Date().getDay()
+let diasemana = 3
+
+console.log(dia)
 
 switch(diasemana){
     case 1:
