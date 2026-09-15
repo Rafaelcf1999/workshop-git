@@ -2,25 +2,25 @@ let dia = 3;
 
 switch (dia) {
     case 1:
-        console.log("Segunda-Feira");
+        console.log("Domingo");
         break;
     case 2:
-        console.log("Terça-Feira");
+        console.log("Segunda-Feira");
         break;
     case 3:
-        console.log("Quarta-Feira");
+        console.log("Terça-Feira");
         break;
     case 4:
-        console.log("Quinta-Feira");
+        console.log("Quarta-Feira");
         break;
     case 5:
-        console.log("Sexta-Feira");
+        console.log("Quinta-Feira");
         break;
     case 6:
-        console.log("Sábado");
+        console.log("Sexta-Feira");
         break;
     case 7:
-        console.log("Domingo");
+        console.log("Sábado");
         break;
     default:
         console.log("Dia inválido");
