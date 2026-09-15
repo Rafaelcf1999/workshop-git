@@ -1,6 +1,6 @@
-let grade = 5
+let dia = 5
 
-switch (grade) {
+switch (dia) {
     case 1:
         console.log("Domingo")
         break;
@@ -21,7 +21,18 @@ switch (grade) {
         break
     case 7:
         console.log("Sabado")
+        break
     default:
         console.log("Numero invalido! Digite um valor entre 1 e 7.");
         break;
+}
+
+
+
+const notas = [5, 6, 7, 8, 9, 10];
+for (let nota of notas){
+    if(nota < 7){
+        continue;
+    }
+    console.log(`Nota: ${nota}`);
 }
