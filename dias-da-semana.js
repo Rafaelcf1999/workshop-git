@@ -1,28 +1,44 @@
-const dia = 5;
+const data = new Date();
+const diaSemana = data.getDay();
+let diaSemanaTexto;
 
-switch (dia) {
+switch (diaSemana) {
+  case 0:
+    diaSemanaTexto = "Domingo";
+    break;
   case 1:
-    console.log("Segunda-feira");
+    diaSemanaTexto = "Segunda-feira";
     break;
   case 2:
-    console.log("Terça-feira");
+    diaSemanaTexto = "Terça-feira";
     break;
   case 3:
-    console.log("Quarta-feira");
+    diaSemanaTexto = "Quarta-feira";
     break;
   case 4:
-    console.log("Quinta-feira ");
+    diaSemanaTexto = "Quinta-feira";
     break;
   case 5:
-    console.log("Sexta-feira");
+    diaSemanaTexto = "Sexta-feira";
     break;
   case 6:
-    console.log("Sábado");
-    break;
-  case 7:
-    console.log("Domingo");
-    break;
-  default:
-    console.log("Dia inválido");
+    diaSemanaTexto = "Sábado";
     break;
 }
+
+console.log(`Hoje é ${diaSemanaTexto}`);
+
+/// Outra maneira
+console.log("Outra maneira de fazer o mesmo:");
+
+const diasSemanaArray = [
+  "Domingo",
+  "Segunda-feira",
+  "Terça-feira",
+  "Quarta-feira",
+  "Quinta-feira",
+  "Sexta-feira",
+  "Sábado",
+];
+
+console.log(`Hoje é ${diasSemanaArray[diaSemana]}`);
