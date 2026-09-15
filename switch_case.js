@@ -1,4 +1,4 @@
-const num = 2;
+const num = 5;
 
 switch (num) {
     case 1:
