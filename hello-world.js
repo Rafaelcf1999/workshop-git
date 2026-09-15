@@ -1,4 +1,4 @@
-const dia = Math.random()*7 + 1
+const dia = parseInt(Math.random()*7 + 1)
 
 switch (dia) {
     case 1:
@@ -19,8 +19,11 @@ switch (dia) {
     case 6:
         console.log("sexta-feira")
         break;
-    default:
+    case 7:
         console.log("sabado")
+        break;
+    default:
+        console.log("dia invalido")
         break;
 }
 
