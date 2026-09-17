@@ -26,7 +26,7 @@ interface ResultadoPedido {
 }
 
 
-function processarPedido(pedido: Pedido): ResultadoPedido {
+function processaPedido(pedido: Pedido): ResultadoPedido {
 
     let desconto = pedido.cliente.tipo === 'premium' ? 0.15 : 0;
     const totalCalculado = pedido.valor - (pedido.valor * desconto);
@@ -49,4 +49,4 @@ const pedidoPremium: Pedido = {
   }
 };
 
-console.log(processarPedido(pedidoPremium));
+console.log(processaPedido(pedidoPremium));
