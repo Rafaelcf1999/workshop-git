@@ -1,3 +1,5 @@
+
+
 function processarPedido(pedido) {
   let desconto = 0;
   if (pedido.cliente.tipo === 'premium') {
