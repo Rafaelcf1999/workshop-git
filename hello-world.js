@@ -1,27 +1,31 @@
-const dia = 1;
+console.log('Hello World');
+const numero = 3;
+let dia;
 
-switch (dia) {
+switch (numero) {
   case 1:
-    console.log('Domingo');
+    dia = 'Domingo';
     break;
   case 2:
-    console.log('Segunda-feira');
+    dia = 'Segunda-feira';
     break;
   case 3:
-    console.log('Terça-feira');
+    dia = 'Terça-feira';
     break;
   case 4:
-    console.log('Quarta-feira');
+    dia = 'Quarta-feira';
     break;
   case 5:
-    console.log('Quinta-feira');
+    dia = 'Quinta-feira';
     break;
   case 6:
-    console.log('Sexta-feira');
+    dia = 'Sexta-feira';
     break;
   case 7:
-    console.log('Sábado');
+    dia = 'Sábado';
     break;
   default:
-    console.log('Não há dia correspondente para o valor inserido.');
+    dia = 'Número inválido';
 }
+
+console.log(dia);
