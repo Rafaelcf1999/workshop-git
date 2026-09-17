@@ -1,7 +1,12 @@
 type TipoCliente = 'premium' | 'regular';
 
+interface NomeCliente {
+  first: string;
+  last: string;
+}
+
 interface Cliente {
-  nome: string;
+  nome: NomeCliente;
   tipo: TipoCliente;
 }
 
@@ -27,10 +32,10 @@ function processarPedido(pedido: Pedido): PedidoProcessado {
   const totalCalculado = pedido.valor - (pedido.valor * desconto);
   return {
     id: pedido.id,
-    nomeCliente: pedido.cliente.nome,
+    nomeCliente: pedido.cliente.nome.first + ' ' + pedido.cliente.nome.last,
     totalCalculado: totalCalculado,
     pago: pedido.status === 'pago'
   };
 }
 
-export default processarPedido;
+export default processarPedido; // p/ parar de conflitar com a mesma declaração no .js
