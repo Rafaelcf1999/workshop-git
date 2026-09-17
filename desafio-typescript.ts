@@ -2,12 +2,13 @@ type ClienteTipo = 'regular' | 'pro' | 'premium';
 
 type StatusPedido = 'pago' | 'pendente';
 
+interface nome {
+  first: string;
+  last: string;
+};
 
 interface Cliente {
-  nome: {
-    first: string;
-    last: string;
-  };
+  nome: nome;
   tipo: ClienteTipo;
 }
 
