@@ -1,22 +1,31 @@
-const checkDayWeek = (day) => {
-  switch (day) {
-    case 0:
-      return "Domingo";
-    case 1:
-      return "Segunda-feira";
-    case 2:
-      return "Terça-feira";
-    case 3:
-      return "Quarta-feira";
-    case 4:
-      return "Quinta-feira";
-    case 5:
-      return "Sexta-feira";
-    case 6:
-      return "Sábado";
-    default:
-      return "Dia inválido";
-  }
-};
+console.log("Hello World");
+const numero = 3;
+let dia;
 
-console.log(checkDayWeek(0));
+switch (numero) {
+  case 1:
+    dia = "Domingo";
+    break;
+  case 2:
+    dia = "Segunda-feira";
+    break;
+  case 3:
+    dia = "Terça-feira";
+    break;
+  case 4:
+    dia = "Quarta-feira";
+    break;
+  case 5:
+    dia = "Quinta-feira";
+    break;
+  case 6:
+    dia = "Sexta-feira";
+    break;
+  case 7:
+    dia = "Sábado";
+    break;
+  default:
+    dia = "Número inválido";
+}
+
+console.log(dia);
