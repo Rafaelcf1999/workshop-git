@@ -26,4 +26,3 @@ switch (dia) {
         console.log("dia invalido")
         break;
 }
-
