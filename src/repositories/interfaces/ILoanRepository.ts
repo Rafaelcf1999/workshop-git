@@ -1,4 +1,4 @@
-import { Loan } from "../../entities/Loan";
+import { Loan } from "../../entities/Loan.ts";
 
 export interface ILoanRepository {
   save(book: Loan): void;
