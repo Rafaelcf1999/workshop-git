@@ -23,10 +23,10 @@ export class LibraryService {
       const book = new Book(id, title, author, category, quantity);
 
       this.books.save(book);
-      console.log("Livro ok"); // pra teste
+      console.log("Livro ok", book); // pra teste
     } catch (error) {
       if (error instanceof Error) {
-        console.error(`Erro registrar livros: ${error.message}`);
+        console.error(`Erro ao registrar livro: ${error.message}`);
       }
     }
   }
@@ -36,10 +36,10 @@ export class LibraryService {
       const user = new User(id, name);
 
       this.users.save(user);
-      console.log("Usuário ok"); // pra teste
+      console.log("Usuário ok:", this.users); // pra teste
     } catch (error) {
       if (error instanceof Error) {
-        console.error(`Erro registrar usuários: ${error.message}`);
+        console.error(`Erro ao registrar usuário: ${error.message}`);
       }
     }
   }
@@ -54,8 +54,7 @@ export class LibraryService {
       const loan = new Loan(findUser.id, findBook.id);
 
       this.loans.save(loan);
-      console.log("Livro emprestado."); // pra teste
-      console.log(this.loans.findAll()); // pra teste
+      console.log("Livro emprestado para:", this.books); // pra teste
     } catch (error) {
       if (error instanceof Error) {
         console.error(`Erro ao realizar empréstimo: ${error.message}`);
@@ -63,7 +62,15 @@ export class LibraryService {
     }
   }
 
-  giveBackBook(userId: number, bookId: number): void {}
+  giveBackBook(userId: number, bookId: number): void {
+    const findUser = this.users.findById(userId);
+    const findBook = this.books.findById(bookId);
+
+    findBook.increase();
+
+    this.loans.remove(findUser.id, findBook.id);
+    console.log("Livro devolvido:", this.books); // para teste;
+  }
 
   search() {} // delegar para a estratégia
 }
