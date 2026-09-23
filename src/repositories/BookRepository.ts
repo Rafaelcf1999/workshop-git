@@ -25,8 +25,6 @@ export class BookRepository implements IBookRepository {
   }
 
   findAll(): Book[] {
-    const books = [...this.repository.values()];
-
-    return books;
+    return [...this.repository.values()];
   }
 }
