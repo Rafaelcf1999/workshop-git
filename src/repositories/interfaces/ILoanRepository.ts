@@ -1,7 +1,7 @@
-import { Loan } from "../../entities/Loan.ts";
+import type { Loan } from "../../entities/Loan.ts";
 
 export interface ILoanRepository {
   save(book: Loan): void;
-  remove(book: Loan[]): Loan;
+  remove(userId: number, bookId: number): void;
   findAll(): Loan[];
 }

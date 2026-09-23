@@ -1,7 +1,13 @@
 import { Book } from "./entities/Book.ts";
+import { Loan } from "./entities/Loan.ts";
+import { User } from "./entities/User.ts";
 import { BookRepository } from "./repositories/BookRepository.ts";
+import { LoanRepository } from "./repositories/LoanRepository.ts";
+import { UserRepository } from "./repositories/UserRepository.ts";
 
 const newRepoBook = new BookRepository();
+const newRepoLoan = new LoanRepository();
+const newRepoUser = new UserRepository();
 
 try {
   const book = new Book(
@@ -11,22 +17,21 @@ try {
     "Programação",
     1,
   );
-  const book1 = new Book(
-    2,
-    "Entendendo Algoritmos",
-    "Aditya Y. Bhargava",
-    "Programação",
-    1,
-  );
+
+  const user = new User(1, "Gustavo");
+  const loan: Loan = new Loan(user.id, book.id);
 
   book.increase();
 
   newRepoBook.save(book);
-  newRepoBook.save(book1);
 
-  console.log("Buscando por ID:", newRepoBook.findById(2));
-
+  console.log("Buscando por ID:", newRepoBook.findById(1));
   console.log("Verificando todos os livros:", newRepoBook.findAll());
+
+  newRepoUser.save(user);
+
+  newRepoLoan.save(loan);
+  newRepoLoan.remove(3, 3); // retorna erro
 } catch (error) {
   if (error instanceof Error) {
     console.error(error.message);
