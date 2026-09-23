@@ -14,7 +14,7 @@ export class UserRepository implements IUserRepository {
     this.userRepository.set(user.id, user);
   }
 
-  findById(id: number): User {
+  findById(id: number): Readonly<User> {
     const userId = this.userRepository.get(id);
 
     if (!userId) {
@@ -24,7 +24,7 @@ export class UserRepository implements IUserRepository {
     return userId;
   }
 
-  findAll(): User[] {
+  findAll(): Readonly<User[]> {
     return [...this.userRepository.values()];
   }
 }
