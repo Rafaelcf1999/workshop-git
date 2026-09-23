@@ -4,14 +4,16 @@ import type { ILoanRepository } from "./interfaces/ILoanRepository.ts";
 export class LoanRepository implements ILoanRepository {
   private loans: Loan[] = [];
 
-  get loanView(): Loan[] {
-    return this.loans;
-  }
-
   save(loan: Loan): void {
-    // fazer verificação
+    const findLoan = this.loans.find(
+      (item) => item.userId === loan.userId && item.bookId === loan.bookId,
+    );
+
+    if (findLoan) {
+      throw new Error("Já existe empréstimo para este livro e usuário.");
+    }
+
     this.loans.push(loan);
-    console.log("UserId e BookId:", this.loans);
   }
 
   remove(userId: number, bookId: number): void {
