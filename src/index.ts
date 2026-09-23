@@ -31,7 +31,11 @@ try {
   newRepoUser.save(user);
 
   newRepoLoan.save(loan);
-  newRepoLoan.remove(3, 3); // retorna erro
+
+  console.log(newRepoLoan.remove(1, 1));
+
+  console.log("Após a remoção:", newRepoLoan.loanView);
+  // newRepoLoan.remove(1, 1); // retorna erro
 } catch (error) {
   if (error instanceof Error) {
     console.error(error.message);
