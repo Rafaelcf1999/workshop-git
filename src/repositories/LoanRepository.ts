@@ -28,7 +28,7 @@ export class LoanRepository implements ILoanRepository {
     }
   }
 
-  findAll(): Loan[] {
-    throw new Error("Method not implemented.");
+  findAll(): Readonly<Loan[]> {
+    return [...this.loans];
   }
 }
