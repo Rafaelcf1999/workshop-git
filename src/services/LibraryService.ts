@@ -12,21 +12,31 @@ export class LibraryService {
     private readonly loans: ILoanRepository,
   ) {}
 
-  registerBook(books: Book[]): void {
+  registerBook(
+    id: number,
+    title: string,
+    author: string,
+    category: string,
+    quantity: number,
+  ): void {
     try {
-      books.forEach((book) => this.books.save(book));
+      const book = new Book(id, title, author, category, quantity);
+
+      this.books.save(book);
+      console.log("Livro ok"); // pra teste
     } catch (error) {
       if (error instanceof Error) {
-        console.error(`Erro registrar usuários: ${error.message}`);
+        console.error(`Erro registrar livros: ${error.message}`);
       }
     }
   }
 
-  registerUser(users: User[]): void {
+  registerUser(id: number, name: string): void {
     try {
-      users.forEach((user) => {
-        this.users.save(user);
-      });
+      const user = new User(id, name);
+
+      this.users.save(user);
+      console.log("Usuário ok"); // pra teste
     } catch (error) {
       if (error instanceof Error) {
         console.error(`Erro registrar usuários: ${error.message}`);
@@ -44,6 +54,8 @@ export class LibraryService {
       const loan = new Loan(findUser.id, findBook.id);
 
       this.loans.save(loan);
+      console.log("Livro emprestado."); // pra teste
+      console.log(this.loans.findAll()); // pra teste
     } catch (error) {
       if (error instanceof Error) {
         console.error(`Erro ao realizar empréstimo: ${error.message}`);
