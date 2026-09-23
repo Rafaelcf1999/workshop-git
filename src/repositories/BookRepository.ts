@@ -14,7 +14,7 @@ export class BookRepository implements IBookRepository {
     this.repository.set(book.id, book);
   }
 
-  findById(id: number): Book {
+  findById(id: number): Readonly<Book> {
     const bookById = this.repository.get(id);
 
     if (!bookById) {
@@ -24,7 +24,7 @@ export class BookRepository implements IBookRepository {
     return bookById;
   }
 
-  findAll(): Book[] {
+  findAll(): Readonly<Book[]> {
     return [...this.repository.values()];
   }
 }
