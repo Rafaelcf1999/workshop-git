@@ -1,43 +1,40 @@
-import { Book } from "./entities/Book.ts";
-import { Loan } from "./entities/Loan.ts";
-import { User } from "./entities/User.ts";
 import { BookRepository } from "./repositories/BookRepository.ts";
 import { LoanRepository } from "./repositories/LoanRepository.ts";
 import { UserRepository } from "./repositories/UserRepository.ts";
+import { LibraryService } from "./services/LibraryService.ts";
+import {
+  SearchByAuthorStrategy,
+  SearchByCategoryStrategy,
+} from "./strategies/SearchStrategy.ts";
 
-const newRepoBook = new BookRepository();
-const newRepoLoan = new LoanRepository();
-const newRepoUser = new UserRepository();
+const bookRepo = new BookRepository();
+const userRepo = new UserRepository();
+const loanRepo = new LoanRepository();
+const searchByAuthor = new SearchByAuthorStrategy();
+const searchByCategory = new SearchByCategoryStrategy();
 
-try {
-  const book = new Book(
-    1,
-    "Entendendo Algoritmos",
-    "Aditya Y. Bhargava",
-    "Programação",
-    1,
-  );
+const library = new LibraryService(bookRepo, userRepo, loanRepo);
 
-  const user = new User(1, "Gustavo");
-  const loan: Loan = new Loan(user.id, book.id);
+library.registerBook(
+  1,
+  "Entendendo Algoritmos",
+  "Aditya Bhargava",
+  "Programação",
+  5,
+);
+library.registerBook(2, "Doutor Sono", "Stephen King", "Drama", 5);
 
-  book.increase();
+library.registerUser(1, "Gustavo");
+library.registerUser(2, "Pedro");
 
-  newRepoBook.save(book);
+library.loanBook(1, 2);
+library.loanBook(1, 2);
 
-  console.log("Buscando por ID:", newRepoBook.findById(1));
-  console.log("Verificando todos os livros:", newRepoBook.findAll());
-
-  newRepoUser.save(user);
-
-  newRepoLoan.save(loan);
-
-  console.log(newRepoLoan.remove(1, 1));
-
-  console.log("Após a remoção:", newRepoLoan.loanView);
-  // newRepoLoan.remove(1, 1); // retorna erro
-} catch (error) {
-  if (error instanceof Error) {
-    console.error(error.message);
-  }
-}
+console.log(
+  "Resultado da busca por Autor:",
+  library.search(searchByAuthor, "Stephen King"),
+);
+console.log(
+  "Resultado da busca por Categoria:",
+  library.search(searchByCategory, "Programação"),
+);
