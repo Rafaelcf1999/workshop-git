@@ -1,4 +1,4 @@
-import User from "../../entities/User";
+import type User from "../../entities/User.ts";
 
 export default interface IUserRepository {
     save(user: User): void;
