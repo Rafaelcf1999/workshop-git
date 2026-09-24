@@ -11,7 +11,6 @@ export class LibraryService {
     private readonly books: IBookRepository,
     private readonly users: IUserRepository,
     private readonly loans: ILoanRepository,
-    private readonly searchStrategy: SearchStrategy,
   ) {}
 
   registerBook(
@@ -80,7 +79,7 @@ export class LibraryService {
     }
   }
 
-  search(query: string): Readonly<Book[]> {
-    return this.searchStrategy.search(this.books.findAll(), query);
+  search(strategy: SearchStrategy, query: string): Readonly<Book[]> {
+    return strategy.search(this.books.findAll(), query);
   }
 }
