@@ -1,0 +1,17 @@
+{
+  "name": "desafio-biblioteca",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node --experimental-transform-types src/index.ts",
+    "dev": "node --experimental-transform-types --watch src/index.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module"
+}
+
+
+
