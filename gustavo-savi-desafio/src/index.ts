@@ -24,24 +24,19 @@ const books = [
 
 const users = [new User(1, "Gustavo"), new User(2, "Pedro")];
 
-{
-  /* Registrando livros */
-}
+/* Registrando livros */
 library.registerBook(books);
 
-{
-  /* Registrando usuários */
-}
+/* Registrando usuários */
 library.registerUser(users);
 
-{
-  /* Realizando um empréstimo */
-}
+/* Realizando um empréstimo */
 library.loanBook(1, 2);
 
-{
-  /* Fazendo busca por autor e por categoria */
-}
+/* Devolvendo um empréstimo */
+library.giveBackBook(1, 2);
+
+/* Fazendo busca por autor e por categoria */
 console.log(
   "Resultado da busca por Autor:",
   library.search(searchByAuthor, "Stephen King"),
