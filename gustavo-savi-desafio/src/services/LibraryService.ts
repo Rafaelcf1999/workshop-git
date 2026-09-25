@@ -65,7 +65,7 @@ export class LibraryService {
       findBook.increase();
 
       this.loans.remove(findUser.id, findBook.id);
-      console.log(`Livro ${findBook} devolvido com sucesso.`); // console.log para apresentação
+      console.log(`Livro ${findBook.title} devolvido com sucesso.`);
     } catch (error) {
       if (error instanceof Error) {
         console.error(`Erro ao devolver o livro: ${error.message}`);
