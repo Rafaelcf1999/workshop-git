@@ -4,10 +4,8 @@ import { BookRepository } from "./repositories/BookRepository.ts";
 import { LoanRepository } from "./repositories/LoanRepository.ts";
 import { UserRepository } from "./repositories/UserRepository.ts";
 import { LibraryService } from "./services/LibraryService.ts";
-import {
-  SearchByAuthorStrategy,
-  SearchByCategoryStrategy,
-} from "./strategies/SearchStrategy.ts";
+import { SearchByAuthorStrategy } from "./strategies/SearchByAuthorStrategy.ts";
+import { SearchByCategoryStrategy } from "./strategies/SearchByCategoryStrategy.ts";
 
 const bookRepo = new BookRepository();
 const userRepo = new UserRepository();
