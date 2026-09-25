@@ -1,4 +1,4 @@
-export enum FilterType {
+export enum FilterEnum {
     TITLE = "title",
     AUTHOR = "author",
     CATEGORY = "category",

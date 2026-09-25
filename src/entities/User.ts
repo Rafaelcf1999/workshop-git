@@ -1,3 +1,6 @@
+/**
+ * Entidade que representa um Usuário no sistema.
+ */
 export default class User {
     public static instanceId: number = 1;
     public readonly id = User.instanceId++;
