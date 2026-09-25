@@ -4,16 +4,11 @@
   "description": "",
   "main": "index.js",
   "type": "module",
-  "imports": {
-    "#entities/*": "./src/entities/*.ts",
-    "#repositories/*": "./src/repositories/*.ts",
-    "#services/*": "./src/services/*.ts"
-  },
   "scripts": {
     "start": "node --experimental-transform-types src/index.ts",
     "dev": "node --experimental-transform-types --watch src/index.ts"
   },
   "keywords": [],
-  "author": "",
+  "author": "Bruno Benitez Forgiarini",
   "license": "ISC"
 }
