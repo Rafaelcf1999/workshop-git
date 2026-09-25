@@ -1,6 +1,7 @@
 # Desafio 1 | Sistema de Gerenciamento de Biblioteca
 
-Início do desenvolvimento: 22/0
+**Início do desenvolvimento: 22/09/26**<br>
+**Fim do desenvolvimento: 25/09/26**
 
 ## Funcionalidades
 
