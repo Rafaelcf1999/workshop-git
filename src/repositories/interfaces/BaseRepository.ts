@@ -1,3 +1,4 @@
+import SearchStrategy from "../../strategies/SearchStrategy";
 
 /**
  * BaseRepository é uma interface genérica que define os métodos
@@ -11,4 +12,5 @@ export default interface BaseRepository<T> {
     save(objectToSave: T): T;
     findById(id: number): T | null;
     findAll(): T[];
+    search(strategy: SearchStrategy<T>, term: string): T[];
 }

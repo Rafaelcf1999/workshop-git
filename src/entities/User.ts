@@ -1,3 +1,5 @@
 export default class User {
-    constructor(public readonly id: number, public readonly name: string) {}
+    public static instanceId: number = 1;
+    public readonly id = User.instanceId++;
+    constructor(public readonly name: string) {}
 }
