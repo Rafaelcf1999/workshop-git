@@ -2,7 +2,7 @@
  * Entidade que representa um Livro no sistema.
  */
 export default class Book {
-    public static instanceId: number = 1;
+    private static instanceId: number = 1;
     public readonly id = Book.instanceId++;
 
     constructor(
