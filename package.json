@@ -1,0 +1,19 @@
+{
+  "name": "workshop-git",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24.10.0"
+  },
+  "scripts": {
+    "start": "node --experimental-transform-types src/index.ts",
+    "dev": "node --experimental-transform-types --watch src/index.ts",
+    "typecheck": "tsc --noEmit",
+    "test": "node --experimental-transform-types --test tests/*.test.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^24.13.6",
+    "typescript": "^7.0.2"
+  }
+}
