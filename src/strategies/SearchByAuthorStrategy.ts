@@ -1,5 +1,5 @@
-import { Book } from '../entities/Book.js'
-import type { SearchStrategy } from './SearchStrategy.js'
+import { Book } from '../entities/Book.ts'
+import type { SearchStrategy } from './SearchStrategy.ts'
 
 export class SearchByAuthorStrategy implements SearchStrategy {
     private author: string;
