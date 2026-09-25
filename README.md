@@ -1,7 +1,5 @@
 # Ambiente TypeScript
 
-Baseada na estrutura de `Desafio-bootcamp`, sem classes ou implementação.
-
 Requisito: Node.js 24.10 ou superior, com npm.
 
 ## Estrutura
@@ -15,9 +13,6 @@ src/
   strategies/
 tests/
 ```
-
-As pastas estão vazias intencionalmente. O Git não versiona pastas vazias.
-Para recriá-las após clonar, execute no PowerShell:
 
 ```powershell
 New-Item -ItemType Directory -Force -Path src/entities, src/repositories/interfaces, src/services, src/strategies, tests
