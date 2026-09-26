@@ -1,0 +1,26 @@
+{
+  "name": "projeto_biblioteca_bootcamp",
+  "version": "1.0.0",
+  "description": "Projeto Node.js com TypeScript",
+  "type": "module",
+  "scripts": {
+    "start": "node --experimental-transform-types src/index.ts",
+    "dev": "node --experimental-transform-types --watch src/index.ts"
+  },
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rafaelcf1999/workshop-git.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rafaelcf1999/workshop-git/issues"
+  },
+  "homepage": "https://github.com/Rafaelcf1999/workshop-git#readme",
+  "devDependencies": {
+    "@types/node": "^26.6.3",
+    "typescript": "^7.0.2"
+  }
+}
