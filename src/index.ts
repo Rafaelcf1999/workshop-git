@@ -2,6 +2,8 @@ import { BookRepository } from "./repositories/BookRepository.ts";
 import { Book } from "./entities/Book.ts";
 import { UserRepository } from "./repositories/UserRepository.ts";
 import { User } from "./entities/User.ts";
+import { LoanRepository } from "./repositories/LoanRepository.ts";
+import { Loan } from "./entities/Loan.ts";
 
 //test BookRepository
 const testeRepo = new BookRepository();
@@ -16,12 +18,29 @@ try{
 }
 
 //test UserRepository
-const testUserRepo = new UserRepository();
-const testUser = new User(99, "Usuário Teste");
-testUserRepo.save(testUser);
-console.log(testUserRepo.findById(99));
+const testeUserRepo = new UserRepository();
+const testeUser = new User(99, "usuário");
+testeUserRepo.save(testeUser);
+console.log(testeUserRepo.findById(99));
 try {
-    testUserRepo.save(testUser);
+    testeUserRepo.save(testeUser);
+} catch (e) {
+    console.log((e as Error).message);
+}
+
+//test LoanRepository
+const testeLoanRepo = new LoanRepository();
+const testLoan = new Loan(25, 25);
+testeLoanRepo.save(testLoan);
+console.log(testeLoanRepo.findAll());
+try {
+    testeLoanRepo.save(testLoan);
+} catch (e) {
+    console.log((e as Error).message);
+}
+testeLoanRepo.remove(25, 25);
+try {
+    testeLoanRepo.remove(25, 25);
 } catch (e) {
     console.log((e as Error).message);
 }
