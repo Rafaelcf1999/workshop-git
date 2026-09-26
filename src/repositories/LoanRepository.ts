@@ -30,6 +30,9 @@ export class LoanRepository implements ILoanRepository{
         this.loans.splice(index, 1);
     }
 
+    //no pdf pede para rernornar  apenas todos os empréstimos
+    //porém para seguir o padrão dos outros métodos findAll das outras duas classes os deixei iguais
+    //testanto e retornando erro caso o array esteja vazio
     public findAll(): Loan[]{
         if(this.loans.length === 0){
             throw new Error("No loans registered");
