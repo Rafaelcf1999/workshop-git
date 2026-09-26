@@ -11,7 +11,6 @@ export default class BookRepository implements IBookRepository {
        }
        console.log('Tudo ok, cadastrando o livro com o id = ' + book.id)
        this.booksDataBase.set(book.id, book);
-       book.increase;
     }
 
     findById(id: number): Book {
