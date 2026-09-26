@@ -1,76 +1,84 @@
-import { BookRepository } from "./repositories/BookRepository.ts";
-import { Book } from "./entities/Book.ts";
-import { UserRepository } from "./repositories/UserRepository.ts";
-import { User } from "./entities/User.ts";
-import { LoanRepository } from "./repositories/LoanRepository.ts";
-import { Loan } from "./entities/Loan.ts";
+//deve demonstrar o funcionamento do sistema
+//instaciar o LibraaryService passando os reposit´roios concretos
+//cadastro mínimo de 2 livros e 2 usuários
+//realização de um empréstimo
+//uma busca por autro e outra por categoria
+//exibir os resultados no console
+
 import { LibraryService } from "./services/LibraryService.ts";
+import { BookRepository } from "./repositories/BookRepository.ts";
+import { UserRepository } from "./repositories/UserRepository.ts";
+import { LoanRepository } from "./repositories/LoanRepository.ts";
+import { Book } from "./entities/Book.ts";
+import { User } from "./entities/User.ts";
 import { SearchByAuthorStrategy } from "./strategies/SearchByAuthorStrategy.ts";
+import { SearchByCategoryStrategy } from "./strategies/SearchByCategoryStrategy.ts";
 
-//test BookRepository
-const testeRepo = new BookRepository();
-const testeBook = new Book(99, "teste", "autor", "categoria", 1);
+const bookRepository = new BookRepository();
+const userRepository = new UserRepository();
+const loanRepository = new LoanRepository();
+const libraryService = new LibraryService(bookRepository, userRepository, loanRepository);
 
-testeRepo.save(testeBook);
-console.log(testeRepo.findById(99));
-try{
-    testeRepo.save(testeBook);
-}catch(e){
-    console.log((e as Error).message);
+function printBooks(books: Book[]): void{
+    for(const book of books){
+        console.log(`Book registered:`);
+        console.log(` Title - ${book.title}`);
+        console.log(` Author - ${book.author}`);
+        console.log(` Category - ${book.category}`);
+        console.log(` Id - ${book.id}`);
+    }
 }
 
-//test UserRepository
-const testeUserRepo = new UserRepository();
-const testeUser = new User(99, "usuário");
-testeUserRepo.save(testeUser);
-console.log(testeUserRepo.findById(99));
-try {
-    testeUserRepo.save(testeUser);
-} catch (e) {
-    console.log((e as Error).message);
+function printUsers(users: User[]): void{
+    for(const user of users){
+        console.log(`User registered:`);
+        console.log(`  Name - ${user.name}`);
+        console.log(`  Id - ${user.id}`);
+    }
 }
 
-//test LoanRepository
-const testeLoanRepo = new LoanRepository();
-const testLoan = new Loan(25, 25);
-testeLoanRepo.save(testLoan);
-console.log(testeLoanRepo.findAll());
-try {
-    testeLoanRepo.save(testLoan);
-} catch (e) {
-    console.log((e as Error).message);
+function printSearch(term : string, result: Book[]): void{
+    if(result.length === 0){
+        console.log(`Search for ${term} returned no results`);
+        return;
+    }
+    const num = result.length === 1 ? "result" : " results";
+    console.log(`Search for ${term} returned ${result.length} ${num}:`);
+    result.forEach(book => {
+        console.log(` Title - ${book.title}`);
+        console.log(` Author - ${book.author}`);
+        console.log(` Category - ${book.category}`);
+        console.log("");
+        }
+    );
 }
-testeLoanRepo.remove(25, 25);
-try {
-    testeLoanRepo.remove(25, 25);
-} catch (e) {
-    console.log((e as Error).message);
+
+console.log("\n=====  Book registration  =====");
+const books: Book[] = [
+    new Book(1, "O Cão dos Baskervilles", "Arthur Conan Doyle", "Ficção Policial", 2),
+    new Book(2, "Uma Breve História do Tempo", "Stephen Hawking", "Divulgação Científica", 1),
+    new Book(3, "A Hora da Estrela", "Clarice Lispector", "Ficção", 3),];
+libraryService.registerBook(books);
+printBooks(books);
+
+console.log("\n=====  User registration  =====");
+const users: User[] = [
+    new User(1, "Kévna"),
+    new User(2, "Késia"),];
+libraryService.registerUser(users);
+printUsers(users);
+
+console.log("\n=====  Loan  =====");
+const loan = libraryService.loanBook(1, 1);
+if (loan) {
+    console.log(`Loan completed:`);
+    console.log(` User ${loan.userId} borrowed book ${loan.bookId}`);
 }
 
-//test LibraryService
-const testeBookRepo = new BookRepository();
-const testeUserRepo2 = new UserRepository();
-const testeLoanRepo2 = new LoanRepository();
-const testeService = new LibraryService(testeBookRepo, testeUserRepo2, testeLoanRepo2);
+console.log("\n=====  Search by author  =====");
+printSearch("Stephen Hawking", libraryService.search(new SearchByAuthorStrategy(), "Stephen Hawking"));
 
-const svcBook = new Book(1, "livro", "autor", "categoria", 1);
-const svcUser = new User(1, "usuário");
 
-testeService.registerBook([svcBook]);
-testeService.registerUser([svcUser]);
-
-const loan = testeService.loanBook(1, 1);
-console.log("Loan:", loan);
-
-const failedLoan = testeService.loanBook(1, 1);
-console.log("Failed loan (duplicate):", failedLoan);
-
-const returned = testeService.giveBackBook(1, 1);
-console.log("Returned:", returned);
-
-const failedReturn = testeService.giveBackBook(1, 1);
-console.log("Failed return (not found):", failedReturn);
-
-testeService.registerBook([svcBook]); // recadastra para testar busca
-const searchResult = testeService.search(new SearchByAuthorStrategy(), "AUTOR");
-console.log("Search result:", searchResult);
+console.log("\n=====  Search by category  =====");
+printSearch("Ficção", libraryService.search(new SearchByCategoryStrategy(), "Ficção"));
+console.log("");
