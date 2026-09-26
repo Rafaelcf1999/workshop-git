@@ -1,31 +1,42 @@
-# workshop-git
-Projeto destinado a ensinar os comandos básicos do github no workshop fellowship
+# Sistema de Gerenciamento de Biblioteca
 
+Backend para gerenciamento de livros, usuários e empréstimos, desenvolvido em TypeScript com suporte nativo do Node.js.
 
-### História do Git 
-- Documentação: https://git-scm.com/book/pt-pt/v2/Come%C3%A7ando-Uma-Breve-Hist%C3%B3ria-do-Git
+## Funcionalidades previstas
 
-### Comandos iniciais 
-- git clone <link-do-repo>
-- git commit -m "mensagem"
-- git add <nome-do-arquivo> ou git add .
-- git push
-- git pull
-- git merge <branch>
-- git checkout <nome-da-branch>
-- git checkout -b <novo-nome-da-branch>
+- Cadastro de livros e usuários.
+- Registro de empréstimos e devoluções.
+- Busca extensível de livros por diferentes critérios.
+- Controle da quantidade de exemplares disponíveis.
 
+## Requisitos
 
+- Node.js 24.10 ou superior.
 
-### Commit Semânticos 
-- feat: Indica a criação de uma nova funcionalidade para o usuário.
-- fix: Utilizado para a correção de erros e bugs.
-- docs: Mudanças exclusivas na documentação (como o README).
-- test: Criação ou alteração de testes automatizados.
-- refactor: Alteração de código que não corrige bugs nem adiciona recursos, mas melhora a estrutura.
-- style: Mudanças de formatação que não alteram o significado do código (espaços, ponto e vírgula).
-- chore: Tarefas de manutenção de build ou ferramentas, sem mexer no código de produção
+## Estrutura do projeto
 
-## Atividade
+```text
+src/
+|-- entities/                 # Entidades do domínio
+|-- repositories/            # Implementações dos repositórios em memória
+|   `-- interfaces/           # Contratos dos repositórios
+|-- services/                 # Orquestração das regras de negócio
+|-- strategies/               # Estratégias de busca de livros
+`-- index.ts                  # Ponto de entrada da aplicação
+```
 
-- Como primeira atividade realizaremos um Pull Request para a main utilizando um commit 
+## Execução
+
+```bash
+npm start
+```
+
+Para executar em modo de desenvolvimento, observando alterações nos arquivos:
+
+```bash
+npm run dev
+```
+
+## Arquitetura
+
+O projeto utiliza Repository Pattern para separar o acesso aos dados, Strategy Pattern para permitir novos critérios de busca e injeção de dependência para manter o serviço desacoplado das implementações concretas.
