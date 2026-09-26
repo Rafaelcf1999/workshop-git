@@ -24,11 +24,12 @@ export default class BookRepository implements IBookRepository {
     }
 
     findAll(): Book[] {
+        if(this.booksDataBase.size === 0){
+            throw new Error('Nao ha livros cadastrados');
+        }
         const listBooks: Book[] = [];
-        for (const book of this.booksDataBase) {
-            if(!book){
-                listBooks.push(book);
-            }
+        for (const book of this.booksDataBase.values()) {
+            listBooks.push(book);  
         }
         return listBooks;
     }
