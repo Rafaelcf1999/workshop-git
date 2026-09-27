@@ -1,4 +1,4 @@
-import Loan from "../entities/Loan.ts";
+import type Loan from "../entities/Loan.ts";
 import type ILoanRepository from "./interfaces/ILoanRepository.ts";
 
 
@@ -12,11 +12,12 @@ export default class LoanRepository implements ILoanRepository{
         );
 
         if (loanExistente) {
-            throw new Error(`Empréstimo de ${loan.userId} de livro ${loan.bookId} já existente`);
+            throw new Error(`Empréstimo já existe`);
         }
 
         this.loans.push(loan);
     }
+
     remove(loan: Loan): void {
         const index = this.loans.findIndex(
             emprestimo => emprestimo.userId === loan.userId && emprestimo.bookId === loan.bookId

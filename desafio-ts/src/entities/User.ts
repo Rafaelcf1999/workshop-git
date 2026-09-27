@@ -5,5 +5,5 @@ export default class User {
     constructor(id: number, name: string) {
         this.id = id;
         this.name = name;
-    };
-};
+    }
+}

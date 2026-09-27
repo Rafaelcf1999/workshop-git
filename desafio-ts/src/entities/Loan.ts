@@ -5,5 +5,5 @@ export default class Loan {
     constructor(userId: number, bookId: number) {
         this.userId = userId;
         this.bookId = bookId;
-    };
-};
+    }
+}

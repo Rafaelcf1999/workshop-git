@@ -47,7 +47,7 @@ const categoryStrategy = new CategorySearchStrategy();
 const booksByAuthor = service.search(authorStrategy, "Arthur Conan Doyle");
 const booksByCategory = service.search(categoryStrategy, "Romance");
 
-console.log("Pesquisando por autor:");
+console.log("Livros encontrados pesquisando por autor:");
 console.log(booksByAuthor);
-console.log("Pesquisando por categoria:");
+console.log("Livros encontrados pesquisando por categoria:");
 console.log(booksByCategory);

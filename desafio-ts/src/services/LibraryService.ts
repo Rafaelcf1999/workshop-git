@@ -1,5 +1,5 @@
-import Book from "../entities/Book.ts";
-import User from "../entities/User.ts";
+import type Book from "../entities/Book.ts";
+import type User from "../entities/User.ts";
 import Loan from "../entities/Loan.ts";
 import type IBookRepository from "../repositories/interfaces/IBookRepository.ts";
 import type IUserRepository from "../repositories/interfaces/IUserRepository.ts";
@@ -12,11 +12,7 @@ export default class LibraryService{
         private books: IBookRepository,
         private users: IUserRepository,
         private loans: ILoanRepository,
-    ){
-        this.books = books;
-        this.users = users;
-        this.loans = loans;
-    }
+    ){}
 
     registerBook(books: Book[]): void{
         try{
@@ -33,7 +29,7 @@ export default class LibraryService{
             for(const user of users){
                 this.users.save(user);
             }
-        }catch(error){
+        } catch(error){
             console.error(error);
         }
     }
@@ -43,24 +39,21 @@ export default class LibraryService{
             this.users.findById(userId);
             const book = this.books.findById(bookId);
 
-            const loanExistente = this.loans.findAll().find(
-                emprestimo =>
-                    emprestimo.userId === userId &&
-                    emprestimo.bookId === bookId
-            );
-
-            if (loanExistente) {
-                throw new Error("Empréstimo já existe.");
-            }
-
-            book.decrease();
-
             const loan = new Loan(userId, bookId);
+
             this.loans.save(loan);
+
+            try {
+                book.decrease();
+            } catch (error) {
+                this.loans.remove(loan);
+                throw error;
+            }
 
         } catch (error) {
             console.error(error);
         }
+
     }
 
     giveBackBook(userId: number, bookId: number): void{
@@ -68,18 +61,10 @@ export default class LibraryService{
             this.users.findById(userId);
             const book = this.books.findById(bookId);
 
-            const loanExistente = this.loans.findAll().find(
-                emprestimo =>
-                    emprestimo.userId === userId &&
-                    emprestimo.bookId === bookId
-            );
+            const loan = new Loan(userId, bookId);
 
-           if (!loanExistente) {
-                throw new Error("Empréstimo não encontrado.");
-            }
-
-            this.loans.remove(loanExistente);
-            book.increase();
+            this.loans.remove(loan);
+            book.increase();    
 
         } catch (error) {
             console.error(error);

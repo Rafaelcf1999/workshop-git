@@ -8,7 +8,7 @@
     "dev": "node --experimental-transform-types --watch src/index.ts"
   },
   "keywords": [],
-  "author": "",
+  "author": "Giovana Sena de Carvalho",
   "license": "ISC",
   "type": "module"
 }
