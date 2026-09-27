@@ -1,4 +1,4 @@
-import type {Book} from "../../entities/Book.js"; 
+import {Book} from "../../entities/Book.ts"; 
 
 export interface IBookRepository{
     save(book: Book): void;
