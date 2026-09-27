@@ -41,7 +41,9 @@ class LibraryService {
       book.decrease();
 
       this.loans.save(new Loan(user.id, book.id));
-    } catch (error) {}
+    } catch (error) {
+      console.error(error)
+    }
   }
 
   giveBackBook(userId: number, bookId: number): void {

@@ -1,10 +1,10 @@
 class Loan {
-    readonly userId:number
-    readonly bookId:number
+    public readonly userId: number;
+    public readonly bookId: number;
 
-    constructor(userId:number, bookId:number){
-       this.userId = userId
-       this.bookId = bookId
+    constructor(userId: number, bookId: number) {
+        this.userId = userId;
+        this.bookId = bookId;
     }
 }
 

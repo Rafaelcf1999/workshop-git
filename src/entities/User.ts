@@ -1,10 +1,10 @@
 class User {
-    readonly id: number
-    readonly name: string
+    public readonly id: number;
+    public readonly name: string;
 
-    constructor(id:number,name:string){
-        this.id = id
-        this.name = name
+    constructor(id: number, name: string) {
+        this.id = id;
+        this.name = name;
     }
 }
 
