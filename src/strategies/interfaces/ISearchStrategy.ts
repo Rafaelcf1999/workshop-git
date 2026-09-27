@@ -1,9 +1,8 @@
-import Book from "../../entities/Book";
+import Book from "../../entities/Book.ts";
 
-interface ISearchStrategy {
+export interface ISearchStrategy {
 
     search(books: Book[]): Book[]
 
 }
 
-export default ISearchStrategy;

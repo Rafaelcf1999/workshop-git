@@ -1,10 +1,10 @@
-import Book from "../entities/Book";
-import Loan from "../entities/Loan";
-import User from "../entities/User";
-import IBookRepository from "../repositories/interfaces/IBookRepository";
-import ILoanRepository from "../repositories/interfaces/ILoanRepository";
-import IUserRepository from "../repositories/interfaces/IUserRepository";
-import ISearchStrategy from "../strategies/interfaces/ISearchStrategy";
+import Book from "../entities/Book.ts";
+import Loan from "../entities/Loan.ts";
+import User from "../entities/User.ts";
+import type { IBookRepository } from "../repositories/interfaces/IBookRepository.ts";
+import type { ILoanRepository } from "../repositories/interfaces/ILoanRepository.ts";
+import type { IUserRepository } from "../repositories/interfaces/IUserRepository.ts";
+import type { ISearchStrategy } from "../strategies/interfaces/ISearchStrategy.ts";
 
 class LibraryService {
   constructor(

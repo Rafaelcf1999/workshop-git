@@ -1,6 +1,6 @@
-import Book from "../../entities/Book";
+import Book from "../../entities/Book.ts";
 
-interface IBookRepository {
+export interface IBookRepository {
     save(book: Book):void
 
     findById(id:number):Book 
@@ -9,4 +9,3 @@ interface IBookRepository {
         
 }
 
-export default IBookRepository;

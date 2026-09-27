@@ -1,5 +1,5 @@
-import User from "../entities/User";
-import IUserRepository from "./interfaces/IUserRepository";
+import User from "../entities/User.ts";
+import type { IUserRepository } from "./interfaces/IUserRepository.ts";
 
 class UserRepository implements IUserRepository {
     private readonly users: Map<number, User> = new Map();

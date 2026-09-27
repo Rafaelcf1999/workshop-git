@@ -1,6 +1,6 @@
-import User from "../../entities/User";
+import User from "../../entities/User.ts";
 
-interface IUserRepository {
+export interface IUserRepository {
 
     save(user: User): void
     findById(id: number): User
@@ -8,4 +8,3 @@ interface IUserRepository {
     
 }
 
-export default IUserRepository;

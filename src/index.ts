@@ -1,11 +1,11 @@
-import Book from "./entities/Book";
-import User from "./entities/User";
-import BookRepository from "./repositories/BookRepository";
-import UserRepository from "./repositories/UserRepository";
-import LoanRepository from "./repositories/LoanRepository";
-import LibraryService from "./services/LibraryService";
-import SearchByAuthor from "./strategies/SearchByAuthor";
-import SearchByCategory from "./strategies/SearchByCategory";
+import Book from "./entities/Book.ts";
+import User from "./entities/User.ts";
+import BookRepository from "./repositories/BookRepository.ts";
+import UserRepository from "./repositories/UserRepository.ts";
+import LoanRepository from "./repositories/LoanRepository.ts";
+import LibraryService from "./services/LibraryService.ts";
+import SearchByAuthor from "./strategies/SearchByAuthor.ts";
+import SearchByCategory from "./strategies/SearchByCategory.ts";
 
 // 1. Instancia repositórios concretos e injeta no service
 const bookRepository = new BookRepository();

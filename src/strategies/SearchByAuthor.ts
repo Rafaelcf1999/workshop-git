@@ -1,5 +1,5 @@
-import Book from "../entities/Book";
-import ISearchStrategy from "./interfaces/ISearchStrategy";
+import Book from "../entities/Book.ts";
+import type { ISearchStrategy } from "./interfaces/ISearchStrategy.ts";
 
 class SerachByAuthor implements ISearchStrategy {
 

@@ -1,5 +1,5 @@
-import Loan from "../entities/Loan";
-import ILoanRepository from "./interfaces/ILoanRepository";
+import Loan from "../entities/Loan.ts";
+import type { ILoanRepository } from "./interfaces/ILoanRepository.ts";
 
 class LoanRepository implements ILoanRepository {
   private readonly loans: Loan[] = [];

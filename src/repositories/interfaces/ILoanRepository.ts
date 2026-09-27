@@ -1,9 +1,8 @@
-import Loan from "../../entities/Loan";
+import Loan from "../../entities/Loan.ts";
 
-interface ILoanRepository{
+export interface ILoanRepository{
     save(loan:Loan): void
     remove(loan:Loan): void
     findAll(): Loan[]
 }
 
-export default ILoanRepository;
