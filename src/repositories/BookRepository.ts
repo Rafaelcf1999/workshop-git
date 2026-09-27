@@ -4,8 +4,8 @@ save: lança erro se já existir um livro com o mesmo id.
 findById: lança erro se o livro não for encontrado.
 findAll: lança erro se não houver livros cadastrados.
 */
-import{Book} from "../entities/Book.ts";
-import type {IBookRepository} from "./interfaces/IBookRepository.ts"
+import{ Book } from "../entities/Book.ts";
+import type { IBookRepository } from "./interfaces/IBookRepository.ts"
 
 export class BookRepository implements IBookRepository {
   private readonly books: Map<number, Book> = new Map();

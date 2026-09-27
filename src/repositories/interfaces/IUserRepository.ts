@@ -1,5 +1,5 @@
 /*definir save; findById; findAll; para o repositório*/
-import {User} from "../../entities/User.ts";
+import { User } from "../../entities/User.ts";
 
 export interface IUserRepository{
 

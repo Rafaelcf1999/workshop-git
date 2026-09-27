@@ -1,5 +1,5 @@
 /*definir save; findById; findAll; para o repositório*/
-import {Book} from "../../entities/Book.ts";
+import { Book } from "../../entities/Book.ts";
 
 export interface IBookRepository{
 

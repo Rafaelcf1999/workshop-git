@@ -4,8 +4,8 @@ save: lança erro se já existir um empréstimo para a mesma combinação de use
 remove: lança erro se o empréstimo não for encontrado. Remove o item do array.
 findAll: retorna todos os empréstimos.
 */
-import {Loan} from "../entities/Loan.ts";
-import type {ILoanRepository} from "./interfaces/ILoanRepository.ts";
+import { Loan } from "../entities/Loan.ts";
+import type { ILoanRepository } from "./interfaces/ILoanRepository.ts";
 
 export class LoanRepository implements ILoanRepository{
 
@@ -17,7 +17,7 @@ export class LoanRepository implements ILoanRepository{
         );
         if(exists){
             throw new Error(
-                `relacao entre o ususario ${loan.userId} e o livro ${loan.bookId} ja existe`
+                `Relacao entre o ususario ${loan.userId} e o livro ${loan.bookId} ja existe`
             );
         }
         this.loans.push(loan);

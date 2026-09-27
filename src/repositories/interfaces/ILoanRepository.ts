@@ -1,5 +1,5 @@
 /*definir save; remove; findAll; para o repositório*/
-import{Loan} from "../../entities/Loan.ts"
+import{ Loan } from "../../entities/Loan.ts"
 
 export interface ILoanRepository{
 

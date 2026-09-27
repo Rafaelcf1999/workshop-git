@@ -5,8 +5,8 @@ findById: lança erro se o usuario não for encontrado.
 findAll: lança erro se não houver usuarios cadastrados.
 */
 
-import{User} from "../entities/User.ts"
-import type {IUserRepository} from "./interfaces/IUserRepository.ts"
+import{ User } from "../entities/User.ts"
+import type { IUserRepository } from "./interfaces/IUserRepository.ts"
 
 export class UserRepository implements IUserRepository {
     private readonly users: Map<number,User> = new Map();
