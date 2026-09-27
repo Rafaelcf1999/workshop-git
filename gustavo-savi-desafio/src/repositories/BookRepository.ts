@@ -18,13 +18,19 @@ export class BookRepository implements IBookRepository {
     const bookById = this.repository.get(id);
 
     if (!bookById) {
-      throw new Error(`Livro de ID número ${id} não encontrado.`);
+      throw new Error(
+        `Livro de ID número ${id} não encontrado no repositório.`,
+      );
     }
 
     return bookById;
   }
 
   findAll(): Readonly<Book[]> {
+    if (this.repository.size === 0) {
+      throw new Error("Nenhum livro encontrado no repositório.");
+    }
+
     return [...this.repository.values()];
   }
 }
