@@ -1,4 +1,4 @@
-import { Loan } from "../entities/Loan.js";
+import type { Loan } from "../entities/Loan.js";
 import type { ILoanRepository } from "./interfaces/ILoanRepository.js";
 
 export class LoanRepository implements ILoanRepository {
