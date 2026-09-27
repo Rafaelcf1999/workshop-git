@@ -6,7 +6,9 @@ import { UserRepository } from "./repositories/UserRepository.ts"
 import { LoanRepository } from "./repositories/LoanRepository.ts"
 
 import {LibraryService } from "./services/LibraryService.ts"
+
 import { SearchByAuthorStrategy } from "./strategies/SearchByAuthorStrategy.ts"
+import { SearchByCategoryStrategy } from "./strategies/SearchByCategoryStrategy.ts"
 
 //1. Instancie o LibraryService passando os repositórios concretos.
 const bookRepository = new BookRepository();
@@ -33,13 +35,14 @@ const libraryService = new LibraryService(
     ]);
 
 //3. Realize um empréstimo.
-
     libraryService.loanBook(2,1);
 
 //4. Faça uma busca por autor e outra por categoria.
-
     const byAuthor = libraryService.search(
         new SearchByAuthorStrategy("H.P.Lovecraft")
+    );
+    const byCategory = libraryService.search(
+        new SearchByCategoryStrategy("Fantasia")
     );
 
 //5. Exiba os resultados no console.
@@ -53,9 +56,4 @@ function printBooks(title: string, books: Book[]): void {
   }
 };
 printBooks("Busca por autor: ", byAuthor);
-
-
-
-
-
-
+printBooks("Busca por categoria", byCategory);
