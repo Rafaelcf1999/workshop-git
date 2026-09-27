@@ -41,15 +41,15 @@ export class LibraryService {
 
   loanBook(userId: number, bookId: number): void {
     try {
-      const findUser = this.users.findById(userId);
-      const findBook = this.books.findById(bookId);
+      const user = this.users.findById(userId);
+      const book = this.books.findById(bookId);
 
-      findBook.decrease();
+      book.decrease();
 
-      const loan = new Loan(findUser.id, findBook.id);
-
+      const loan = new Loan(user.id, book.id);
       this.loans.save(loan);
-      console.log(`Livro ${findBook.title} emprestado para ${findUser.name}.`);
+
+      console.log(`Livro ${book.title} emprestado para ${user.name}.`);
     } catch (error) {
       if (error instanceof Error) {
         console.error(`Erro ao realizar empréstimo: ${error.message}`);
@@ -59,13 +59,13 @@ export class LibraryService {
 
   giveBackBook(userId: number, bookId: number): void {
     try {
-      const findUser = this.users.findById(userId);
-      const findBook = this.books.findById(bookId);
+      const user = this.users.findById(userId);
+      const book = this.books.findById(bookId);
 
-      findBook.increase();
+      this.loans.remove(user.id, book.id);
+      book.increase();
 
-      this.loans.remove(findUser.id, findBook.id);
-      console.log(`Livro ${findBook.title} devolvido com sucesso.`);
+      console.log(`Livro ${book.title} devolvido com sucesso.`);
     } catch (error) {
       if (error instanceof Error) {
         console.error(`Erro ao devolver o livro: ${error.message}`);
