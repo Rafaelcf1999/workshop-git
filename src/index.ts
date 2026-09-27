@@ -1,13 +1,3 @@
-/*
-BookRepository
-UserRepository
-LoanRepository
-LibraryService
-SearchByAuthor
-SearchByCategory
-Book
-User
-*/
 import { BookRepository } from "./repositories/BookRepository.ts";
 import { UserRepository } from "./repositories/UserRepository.ts";
 import { LoanRepository } from "./repositories/LoanRepository.ts";
