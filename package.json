@@ -1,0 +1,20 @@
+{
+    "name": "ana.carolina.rafael-desafio",
+    "version": "1.0.0",
+    "scripts": {
+        "start": "node --experimental-transform-types src/index.ts",
+        "dev": "node --experimental-transform-types --watch src/index.ts"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Ana-Carolina-dev/Ana.Carolina.Rafael-Desafio.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "type": "module",
+    "bugs": {
+        "url": "https://github.com/Ana-Carolina-dev/Ana.Carolina.Rafael-Desafio/issues"
+    },
+    "homepage": "https://github.com/Ana-Carolina-dev/Ana.Carolina.Rafael-Desafio#readme"
+}
