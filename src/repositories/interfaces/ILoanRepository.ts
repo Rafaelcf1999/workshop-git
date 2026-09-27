@@ -2,7 +2,7 @@ import type { Loan } from "../../entities/Loan.js";
 
 export interface ILoanRepository{
     save(loan: Loan): void
-    findById(id:Number): Loan
+    remove(id: number): Loan
     findAll(): Loan[];
 }
 
