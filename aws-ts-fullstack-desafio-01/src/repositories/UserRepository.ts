@@ -22,8 +22,10 @@ export default class UserRepository implements IUserRepository {
         return user;
     }
     findAll(): User[] {
-        
-        throw new Error(`No users registered.`);
+        if (this.users.size === 0) {
+            throw new Error("No users registered");
+        }
+        return Array.from(this.users.values());
     }
 
 }
