@@ -7,6 +7,9 @@ import { SearchByCategory } from "./strategies/SearchByCategory.ts";
 import { Book } from "./entities/Book.ts";
 import { User } from "./entities/User.ts";
 
+const searchByAuthor = new SearchByAuthor();
+
+const searchByCategory = new SearchByCategory();
 const bookRepository = new BookRepository();
 const userRepository = new UserRepository();
 const loanRepository = new LoanRepository();
@@ -33,5 +36,13 @@ const user1 = new User(1, "Gustavo");
 const user2 = new User(2, "João");
 
 libraryService.registerUser([user1, user2]);
-console.log(bookRepository.findAll());
-console.log(userRepository.findAll());
+
+libraryService.loanBook(user1.id, book1.id);
+
+const booksByAuthor = libraryService.search(searchByAuthor, "stephen");
+
+console.log(booksByAuthor);
+
+const booksByCategory = libraryService.search(searchByCategory, "investigação");
+
+console.log(booksByCategory);
