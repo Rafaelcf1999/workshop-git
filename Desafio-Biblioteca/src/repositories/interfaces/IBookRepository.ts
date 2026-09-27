@@ -1,7 +1,7 @@
 import Book from "../../entities/Book.ts";
 
 export default interface IBookRepository{
-    save(book: Book): void;
+    save(book: Book): boolean;
     findById(id: number): Book | undefined;
-    findAll(): void;
+    findAll(): Book[];
 }   

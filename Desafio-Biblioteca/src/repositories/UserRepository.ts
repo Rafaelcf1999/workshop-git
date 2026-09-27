@@ -5,30 +5,33 @@ export default class UserRepository implements IUserRepository {
 
     public users = new Map<number, User>();
     
-    save(user: User): void {
-        for (let [userid] of this.users) {
+    save(user: User): boolean {
+        /*for (let [userid] of this.users) {
             if (userid === user.id) {
-                console.error(`Um usuário com o ID ${user.id} já está cadastrado no sistema.`)
+                return false;
             }
+        }*/
+
+        if(this.users.has(user.id)){
+            return false;
         }
 
         this.users.set(user.id, user);
+        return true;
     }
 
     findById(id: number) {
-        for (let [userid] of this.users) {
+        /*for (let [userid] of this.users) {
             if (userid === id) {
                 return this.users.get(id);
             }
-        }
+        }*/
 
-        console.error(`Não há um usuário cadastrado com o ID ${id}.`);
+        return this.users.get(id);
     }
 
-    findAll(): void {
-        for (let user of this.users) {
-            console.log(user)
-        }
+    findAll(): User[] {
+        return Array.from(this.users.values());
     }
 
 }
