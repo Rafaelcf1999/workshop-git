@@ -1,7 +1,7 @@
 import type { SearchStrategy } from "../strategies/SearchStrategy.js";
 import type { Book } from "../entities/Book.js";
 import type { User } from "../entities/User.js";
-import { Loan } from "../entities/Loan.js";
+import { Loan } from "../entities/Loan.ts";
 import type { IBookRepository } from "../repositories/interfaces/IBookRepository.js";
 import type { IUserRepository } from "../repositories/interfaces/IUserRepository.js";
 import type { ILoanRepository } from "../repositories/interfaces/ILoanRepository.js";
@@ -10,18 +10,15 @@ export class LibraryService {
   private books: IBookRepository;
   private users: IUserRepository;
   private loans: ILoanRepository;
-  private searchStrategy: SearchStrategy;
 
   constructor(
     books: IBookRepository,
     users: IUserRepository,
     loans: ILoanRepository,
-    searchStrategy: SearchStrategy,
   ) {
     this.books = books;
     this.users = users;
     this.loans = loans;
-    this.searchStrategy = searchStrategy;
   }
 
   public registerBook(books: Book[]): void {
