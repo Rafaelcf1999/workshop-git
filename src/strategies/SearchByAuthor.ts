@@ -1,5 +1,5 @@
-import type { Book } from "../entities/Book.js";
-import type { SearchStrategy } from "./SearchStrategy.js";
+import type { Book } from "../entities/Book.ts";
+import type { SearchStrategy } from "./SearchStrategy.ts";
 
 export class SearchByAuthor implements SearchStrategy {
   public search(books: Book[], query: string): Book[] {
