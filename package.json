@@ -3,10 +3,16 @@
   "version": "1.0.0",
   "description": "Projeto destinado a ensinar os comandos básicos do github no workshop fellowship",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node --experimental-transform-types src/index.ts",
+    "dev": "node --experimental-transform-types --watch src/index.ts"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^26.6.3",
+    "typescript": "^7.0.2"
+  }
 }

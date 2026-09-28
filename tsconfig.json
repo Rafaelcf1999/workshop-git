@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "noEmit": true,             
+    "rootDir": "./src",
+
+    "module": "NodeNext",
+    "target": "ESNext",
+    "moduleDetection": "force",
+    
+    "types": ["node"],               
+
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "skipLibCheck": true,
+
+    "verbatimModuleSyntax": true,  
+    "isolatedModules": true,       
+    "noUncheckedSideEffectImports": true,
+    
+  },
+  "include": ["src/**/*"]
+}
