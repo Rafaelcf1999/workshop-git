@@ -13,7 +13,7 @@ export class LibraryService {
     private readonly loan: ILoanRepository,
   ) { }
 
-  registerBook(books: Book[]) {
+  registerBook(books: Book[]): void {
     try {
       for (const book of books) {
         this.book.save(book);
@@ -23,7 +23,7 @@ export class LibraryService {
     }
   }
 
-  registerUser(users: User[]) {
+  registerUser(users: User[]): void {
     try {
       for (const user of users) {
         this.user.save(user);
@@ -33,7 +33,7 @@ export class LibraryService {
     }
   }
 
-  loanBook(userId: number, bookId: number) {
+  loanBook(userId: number, bookId: number): void {
     try {
       const user = this.user.findById(userId);
       const book = this.book.findById(bookId);
@@ -46,7 +46,7 @@ export class LibraryService {
     }
   }
 
-  giveBackBook(userId: number, bookId: number) {
+  giveBackBook(userId: number, bookId: number): void {
     try {
       const user = this.user.findById(userId);
       const book = this.book.findById(bookId);
@@ -59,7 +59,7 @@ export class LibraryService {
     }
   }
 
-  search(searchStrategy: SearchStrategy, keyword: string) {
+  search(searchStrategy: SearchStrategy, keyword: string): Book[] | undefined {
     try {
       const books = this.book.findAll();
 
