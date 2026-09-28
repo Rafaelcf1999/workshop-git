@@ -2,7 +2,8 @@
   "compilerOptions": {
     "noEmit": true,             
     "rootDir": "./src",
-
+    
+    "allowImportingTsExtensions": true,
     "module": "NodeNext",
     "target": "ESNext",
     "moduleDetection": "force",

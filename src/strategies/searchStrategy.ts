@@ -1,5 +1,5 @@
-import { Book } from "../entities/Book.js";
-import type { IBookRepository } from "../repositories/interfaces/IBookRepository.js";
+import { Book } from "../entities/Book.ts";
+import type { IBookRepository } from "../repositories/interfaces/IBookRepository.ts";
 
 export interface SearchStrategy{
     search(value: string): Book[];

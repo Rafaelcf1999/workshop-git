@@ -1,5 +1,5 @@
-import { Loan } from '../entities/Loan.js';
-import type { ILoanRepository } from '../repositories/interfaces/ILoanRepository.js';
+import { Loan } from '../entities/Loan.ts';
+import type { ILoanRepository } from '../repositories/interfaces/ILoanRepository.ts';
 
 export class LoanRepository implements ILoanRepository{
     private loan: Loan[] = [];

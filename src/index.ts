@@ -1,11 +1,11 @@
-import { Book } from "./entities/Book.js";
-import { Loan } from "./entities/Loan.js";
-import { User } from "./entities/User.js";
-import { BookRepository } from "./repositories/BookRepository.js";
-import { LoanRepository } from "./repositories/LoanRepository.js";
-import { UserRepository } from "./repositories/UserRepository.js";
-import { LibraryService } from "./services/LibraryService.js";
-import { SearchBookByAuthor, SearchBookByCategory } from "./strategies/SearchStrategy.js";
+import { Book } from "./entities/Book.ts";
+import { Loan } from "./entities/Loan.ts";
+import { User } from "./entities/User.ts";
+import { BookRepository } from "./repositories/BookRepository.ts";
+import { LoanRepository } from "./repositories/LoanRepository.ts";
+import { UserRepository } from "./repositories/UserRepository.ts";
+import { LibraryService } from "./services/LibraryService.ts";
+import { SearchBookByAuthor, SearchBookByCategory } from "./strategies/SearchStrategy.ts";
 
 const bookRepository = new BookRepository(); 
 
@@ -28,5 +28,5 @@ Library.registerUser([
 Library.loanBook(
   new Loan(1, 3)
 )
-Library.search("Matt Haig", new SearchBookByAuthor(bookRepository))
-Library.search("Terror", new SearchBookByCategory(bookRepository))
+console.log(Library.search("Matt Haig", new SearchBookByAuthor(bookRepository)))
+console.log(Library.search("Terror", new SearchBookByCategory(bookRepository)))
