@@ -40,5 +40,10 @@
     "noUncheckedSideEffectImports": true,
     "moduleDetection": "force",
     "skipLibCheck": true,
+
+    // my options
+    "allowImportingTsExtensions": true,
+    "rewriteRelativeImportExtensions": true,
+
   }
 }

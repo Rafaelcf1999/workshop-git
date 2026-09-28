@@ -1,10 +1,10 @@
-import { Book } from "../entities/Book.js";
-import { Loan } from "../entities/Loan.js";
-import type { User } from "../entities/User.js";
-import type { IBookRepository } from "../repositories/interfaces/IBookRepository.js";
-import type { ILoanRepository } from "../repositories/interfaces/ILoanRepository.js";
-import type { IUserRepository } from "../repositories/interfaces/IUserRepository.js";
-import type { IBookSearchStrategy } from "../strategys/interfaces/IBookSearchStrategy.js";
+import { Book } from "../entities/Book.ts";
+import { Loan } from "../entities/Loan.ts";
+import type { User } from "../entities/User.ts";
+import type { IBookRepository } from "../repositories/interfaces/IBookRepository.ts";
+import type { ILoanRepository } from "../repositories/interfaces/ILoanRepository.ts";
+import type { IUserRepository } from "../repositories/interfaces/IUserRepository.ts";
+import type { IBookSearchStrategy } from "../strategys/interfaces/IBookSearchStrategy.ts";
 
 export class LibraryService{
     constructor(

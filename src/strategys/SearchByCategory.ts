@@ -1,7 +1,7 @@
-import { Book } from "../entities/Book.js";
-import type { BookSearch } from "./interfaces/IBookSearchStrategy.js";
+import { Book } from "../entities/Book.ts";
+import type { IBookSearchStrategy } from "./interfaces/IBookSearchStrategy.ts";
 
-export class SearchByCategoryStrategy implements BookSearch{
+export class SearchByCategoryStrategy implements IBookSearchStrategy{
     private category: string
     constructor(category: string){
         this.category = category

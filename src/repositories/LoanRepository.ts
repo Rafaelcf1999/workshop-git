@@ -1,11 +1,11 @@
-import type { Loan } from "../entities/Loan.js";
-import type { ILoanRepository } from "./interfaces/ILoanRepository.js";
+import type { Loan } from "../entities/Loan.ts";
+import type { ILoanRepository } from "./interfaces/ILoanRepository.ts";
 
 export class LoanRepository implements ILoanRepository{
 
     private loans: Loan[] = []
 
-    private loanExist(loan: Loan): boolean {
+    loanExist(loan: Loan): boolean {
         return this.loans.some(
             existingLoan =>
             existingLoan.userId === loan.userId &&

@@ -22,5 +22,8 @@
   "devDependencies": {
     "@types/node": "^26.6.3",
     "typescript": "^7.0.2"
+  },
+  "dependencies": {
+    "undici-types": "^8.9.0"
   }
 }

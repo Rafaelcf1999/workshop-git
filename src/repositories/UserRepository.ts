@@ -1,5 +1,5 @@
-import type { User } from "../entities/User.js";
-import type { IUserRepository } from "./interfaces/IUserRepository.js";
+import type { User } from "../entities/User.ts";
+import type { IUserRepository } from "./interfaces/IUserRepository.ts";
 
 export class UserRepository implements IUserRepository{
     private users = new Map<number, User>()

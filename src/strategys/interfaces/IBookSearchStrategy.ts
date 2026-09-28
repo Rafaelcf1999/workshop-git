@@ -1,5 +1,5 @@
-import type { Book } from "../../entities/Book.js";
+import type { Book } from "../../entities/Book.ts";
 
-export interface BookSearch{
+export interface IBookSearchStrategy{
     search(books: Book[]): Book[]
 }
