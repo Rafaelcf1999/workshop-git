@@ -4,6 +4,7 @@ import { User } from "../entities/user.entity.ts";
 import type { IBookRepository } from "../repositories/interfaces/book.interface.ts";
 import type { ILoanRepository } from "../repositories/interfaces/loan.interface.ts";
 import type { IUserRepository } from "../repositories/interfaces/user.interface.ts";
+import type { SearchStrategy } from "../strategies/search.strategy.ts";
 
 export class LibraryService {
   constructor(
@@ -58,5 +59,13 @@ export class LibraryService {
     }
   }
 
-  search() { }
+  search(searchStrategy: SearchStrategy, keyword: string) {
+    try {
+      const books = this.book.findAll();
+
+      return searchStrategy.search(books, keyword);
+    } catch (error) {
+      console.error(error);
+    }
+  }
 }
