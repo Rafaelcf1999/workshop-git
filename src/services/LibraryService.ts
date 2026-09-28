@@ -13,7 +13,6 @@ export default class LibraryService {
         private readonly books: IBookRepository,
         private readonly users: IUserRepository,
         private readonly loans: ILoanRepository,
-
     ) {}
 
     registerBook(bookList: Book[]): void {

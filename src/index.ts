@@ -24,18 +24,18 @@ library.registerBook([
 
 library.registerUser([new User(1, "Richard"), new User(2, "Ana Júlia")])
 
-console.log("Cópias antes do empréstimo: ", ensaioSobreACegueira.getQuantity())
+console.log("Cópias antes do empréstimo:", ensaioSobreACegueira.getQuantity())
 library.loanBook(1, 1)
-console.log("Depois do empréstimo: ", ensaioSobreACegueira.getQuantity())
+console.log("Depois do empréstimo:", ensaioSobreACegueira.getQuantity())
 
 const byAuthor = library.search(new SearchAuthorStrategy("José Saramago"));
-console.log("Livros de José Saramago: ", byAuthor.map((book) => book.title))
+console.log("Livros de José Saramago:", byAuthor.map((book) => book.title))
 
 const byCategory = library.search(new SearchCategoryStrategy("Mistério"))
-console.log("Livros de Mistério: ", byCategory.map((book) => book.title))
+console.log("Livros de Mistério:", byCategory.map((book) => book.title))
 
 library.giveBackBook(1, 1)
-console.log("Cópias depois de devolver: ", ensaioSobreACegueira.getQuantity());
+console.log("Cópias depois de devolver:", ensaioSobreACegueira.getQuantity());
 
 library.loanBook(1, 2)
 library.loanBook(2, 2)
