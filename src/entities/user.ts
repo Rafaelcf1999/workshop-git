@@ -1,9 +1,9 @@
-export class User{
-    public readonly id: Number;
-    public readonly name: String;
+export class User {
+  public readonly id: number;
+  public readonly name: string;
 
-constructor(id: Number, name: String){
+  constructor(id: number, name: string) {
     this.id = id;
     this.name = name;
-    }
+  }
 }
