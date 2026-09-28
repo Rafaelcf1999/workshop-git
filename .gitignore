@@ -1,0 +1,19 @@
+# Dependências
+node_modules/
+
+dist/
+build/
+
+# Variáveis de ambiente (segurança)
+.env
+.env.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+
+.vscode/
+.idea/
+.DS_Store
