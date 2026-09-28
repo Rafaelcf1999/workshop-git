@@ -16,18 +16,20 @@ export default class LibraryService {
 
     ) {}
 
-    private logError(error: unknown): void {
-        if (error instanceof Error) {
-            console.error(error.message);
-        } else {
-            console.error(error);
-        }
-    }
-
     registerBook(bookList: Book[]): void {
         for (const book of bookList) {
             try {
                 this.books.save(book)
+            } catch (error) {
+                this.logError(error)
+            }
+        }
+    }
+
+    registerUser(userList: User[]): void {
+        for (const user of userList) {
+            try {
+                this.users.save(user)
             } catch (error) {
                 this.logError(error)
             }
@@ -77,13 +79,11 @@ export default class LibraryService {
         }
     }
 
-    registerUser(userList: User[]): void {
-        for (const user of userList) {
-            try {
-                this.users.save(user)
-            } catch (error) {
-                this.logError(error)
-            }
+    private logError(error: unknown): void {
+        if (error instanceof Error) {
+            console.error(error.message);
+        } else {
+            console.error(error);
         }
     }
 }
