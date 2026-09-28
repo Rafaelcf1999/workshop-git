@@ -24,9 +24,6 @@ export default class LoanRepository implements ILoanRepository {
     }
   }
   findAll(): Loan[] {
-    if (this.loans.length > 0) {
-      return this.loans;
-    }
-    throw new Error('Has no loans.');
+    return [...this.loans];
   }
 }
