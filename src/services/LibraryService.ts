@@ -1,0 +1,63 @@
+import { Book } from "../entities/Book.js";
+import { User } from "../entities/User.js";
+import { Loan } from "../entities/Loan.js";
+import type {IBookRepository} from '../repositories/interfaces/IBookRepository.js'
+import type {IUserRepository} from '../repositories/interfaces/IUserRepository.js'
+import type {ILoanRepository} from '../repositories/interfaces/ILoanRepository.js'
+
+export class LibraryService{
+    constructor(
+        protected books: IBookRepository,
+        protected users: IUserRepository,
+        protected loans: ILoanRepository
+    ){}
+    registerBook(booksList: Book[]): void{
+        try{
+            for(let book of booksList){
+                this.books.save(book);
+            }
+        }catch(e){
+            console.log(e);
+        }
+    }
+    registerUser(usersList: User[]): void{
+        try{
+            for(let user of usersList){
+                this.users.save(user);
+            }
+        }catch(e){
+            console.log(e);
+        }
+    }
+    loanBook(loan: Loan): void{
+        try{
+            const user = this.users.findById(loan.userId);
+            const book = this.books.findById(loan.bookId);
+            if(user && book){
+                book.decrease();
+                this.loans.save(loan);
+            }
+        }catch(e){
+            console.log(e);
+        }
+    }
+    giveBackBook(loan: Loan): void{
+        try{
+            const user = this.users.findById(loan.userId);
+            const book = this.books.findById(loan.bookId);
+            if(user && book){
+                book.increase();
+                this.loans.remove(loan);
+            }
+        }catch(e){
+            console.log(e);
+        }
+    }
+    search(){
+        try{
+
+        }catch(e){
+            console.log(e);
+        }
+    }
+} 
