@@ -20,7 +20,7 @@ export default class Book {
 
     decrease() {
         if (this._quantity <= 0) {
-            throw new Error(`Nenhuma cópia disponível.`)
+            throw new Error(`No copies available.`)
         }
 
         this._quantity--;

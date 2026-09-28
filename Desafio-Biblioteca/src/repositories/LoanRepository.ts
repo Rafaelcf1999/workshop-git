@@ -9,7 +9,7 @@ export default class LoanRepository implements ILoanRepository {
 
         for(let oneloan of this.loans){
              if (oneloan.userId === loan.userId && oneloan.bookId === loan.bookId) {
-                throw new Error(`Usuário ${loan.userId} já está com o livro ${loan.bookId}.`)
+                throw new Error(`User ${loan.userId} has already borrowed book ${loan.bookId}.`);
             }
         }
 
@@ -31,7 +31,7 @@ export default class LoanRepository implements ILoanRepository {
             loancount++;
         }
 
-        throw new Error(`Usuário ${loan.userId} não está com o livro ${loan.bookId}`)
+        throw new Error(`User ${loan.userId} has not borrowed book ${loan.bookId}`)
       
     }
 

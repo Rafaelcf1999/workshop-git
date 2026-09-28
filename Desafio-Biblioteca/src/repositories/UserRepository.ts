@@ -8,7 +8,7 @@ export default class UserRepository implements IUserRepository {
     save(user: User): boolean {
 
         if(this.users.has(user.id)){
-            throw new Error(`Um usuário com o ID ${user.id} já está cadastrado no sistema.`);
+            throw new Error(`User with ID ${user.id} already exists.`);
         }
 
         this.users.set(user.id, user);
@@ -20,7 +20,7 @@ export default class UserRepository implements IUserRepository {
         const user = this.users.get(id);
 
         if(!user){
-            throw new Error(`Usuário com o ID ${id} não encontrado.`)
+            throw new Error(`User with ID ${id} not found.`)
         }
 
         return user;

@@ -9,9 +9,9 @@ import type SearchStrategy from "../strategies/SearchStrategy.ts";
 
 export default class LibraryService {
 
-    public books: IBookRepository;
-    public users: IUserRepository;
-    public loans: ILoanRepository;
+    private books: IBookRepository;
+    private users: IUserRepository;
+    private loans: ILoanRepository;
 
     constructor(books: IBookRepository, users: IUserRepository, loans: ILoanRepository) {
         this.books = books;
@@ -23,7 +23,7 @@ export default class LibraryService {
         for (let book of books) {
             try {
                 this.books.save(book);
-                console.log(`Livro: ${book.title} registrado com sucesso!`);
+                console.log(`Book: ${book.title} registered successfully!`);
             } catch (error) {
                 return console.error(error);
             }
@@ -35,7 +35,7 @@ export default class LibraryService {
         for (let user of users) {
             try {
                 this.users.save(user);
-                console.log(`Usuário: ${user.name} registrado com sucesso!`);
+                console.log(`User: ${user.name} registered successfully!`);
             } catch (error) {
                 return console.error(error);
             }
@@ -54,7 +54,7 @@ export default class LibraryService {
             this.loans.save(loan);
 
 
-            return console.log(`Empréstimo concluído! ${user.name} emprestou ${book.title}`);
+            return console.log(`Loan Completed! ${user.name} borrowed ${book.title}`);
 
         } catch (error) {
             return console.error(error);
@@ -71,7 +71,7 @@ export default class LibraryService {
             this.loans.remove(loan);
 
             book.increase();
-            return console.log(`Devolução Concluída! ${user.name} devolveu ${book.title}`);
+            return console.log(`Return Completed! ${user.name} returned ${book.title}`);
 
         } catch (error) {
             return console.error(error);

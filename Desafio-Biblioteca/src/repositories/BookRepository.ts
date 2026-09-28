@@ -10,7 +10,7 @@ export default class BookRepository implements IBookRepository {
        
         if(this.books.has(book.id)){
             console.error()
-            throw new Error(`Um livro com o ID ${book.id} já está cadastrado no sistema.`);
+            throw new Error(`Book with ID ${book.id} already exists.`);
         }
         
         this.books.set(book.id, book);
@@ -22,7 +22,7 @@ export default class BookRepository implements IBookRepository {
         const book = this.books.get(id);
         
         if(!book){
-            throw new Error(`Livro com o ID ${id} não encontrado.`);
+            throw new Error(`Book with ID ${id} not found.`);
         }
 
         return book;
