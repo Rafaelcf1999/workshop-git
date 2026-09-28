@@ -14,12 +14,11 @@ export class LoanRepository implements ILoanRepository{
         }
     }
     remove(loan: Loan): void {
-        const lent = this.loan.some(l => l.userId === loan.userId && l.bookId === loan.bookId);
-        if(!lent){
+        const index = this.loan.findIndex(l => l.userId === loan.userId && l.bookId === loan.bookId);
+        if(index === -1){
             throw new Error('Loan do not founded.')
         } else {
-            //remover em um indice
-            //this.loan.;
+            this.loan.splice(index, 1);
         }
     }
     findAll(): Loan[] {
