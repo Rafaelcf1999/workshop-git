@@ -16,7 +16,7 @@ export class LoanRepository implements ILoanRepository{
     save(loan: Loan): void {
         const exist = this.loanExist(loan)
         if (exist) {
-            throw new Error("emprestimo ja existe.");
+            throw new Error("emprestimo ja realizado.");
         }
         this.loans.push(loan);
     }
@@ -29,7 +29,7 @@ export class LoanRepository implements ILoanRepository{
         );
 
         if (index === -1) {
-            throw new Error("Loan não existe.");
+            throw new Error("emprestimo não realizado.");
         }
 
         this.loans.splice(index, 1);

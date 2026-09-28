@@ -7,7 +7,6 @@ export class SearchByCategoryStrategy implements IBookSearchStrategy{
         this.category = category
     }
     search(books: Book[]): Book[] {
-        // throw new Error("Method not implemented.");
-        return books.filter(book => book.author === this.category)
+        return books.filter(book => book.category === this.category)
     }
 }

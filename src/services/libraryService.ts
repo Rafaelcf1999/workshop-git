@@ -4,7 +4,7 @@ import type { User } from "../entities/User.ts";
 import type { IBookRepository } from "../repositories/interfaces/IBookRepository.ts";
 import type { ILoanRepository } from "../repositories/interfaces/ILoanRepository.ts";
 import type { IUserRepository } from "../repositories/interfaces/IUserRepository.ts";
-import type { IBookSearchStrategy } from "../strategys/interfaces/IBookSearchStrategy.ts";
+import type { IBookSearchStrategy } from "../strategis/interfaces/IBookSearchStrategy.ts";
 
 export class LibraryService{
     constructor(
@@ -36,28 +36,31 @@ export class LibraryService{
         try {
             const user = this.users.findById(userId)
             const book = this.books.findById(bookId)
-            book.decrease()
+            
             const loan = new Loan(userId,bookId)
             this.loans.save(loan)
+            book.decrease()
             console.log(`Emprestimo feito com sucesso para o livro ${book.title}`)
             
         } catch (error: any) {
-            console.log(`Erro ao fazer emprestimo do livro ${error.message}`)
+            console.log(`Erro ao fazer emprestimo do livro, ${error.message}`)
         }
 
     }
     giveBackBook(userId: number, bookId: number): void{
         try {
-            const book = this.books. findById(bookId);
-
-            book.increase()
+            this.users.findById(userId);
+            const book = this.books.findById(bookId);
+            
             const loan = new Loan(userId, bookId)
 
             this.loans.remove(loan)
+
+            book.increase()
             console.log(`Devolução registrada com sucesso parao livro ${book.title}`)
             
         } catch (error: any) {
-            console.log(`falha na adevolução ${error.message}`)
+            console.log(`falha na devolução ${error.message}`)
         }
     }
     search(strategy: IBookSearchStrategy): Book[]{

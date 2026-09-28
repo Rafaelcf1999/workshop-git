@@ -4,8 +4,8 @@ import { BookRepository } from "./repositories/BookRepository.ts";
 import { LoanRepository } from "./repositories/LoanRepository.ts";
 import { UserRepository } from "./repositories/UserRepository.ts";
 import { LibraryService } from "./services/libraryService.ts";
-import { SearchByAuthorStrategy } from "./strategys/SearchByAuthorStrategy.ts";
-import { SearchByCategoryStrategy } from "./strategys/SearchByCategory.ts";
+import { SearchByAuthorStrategy } from "./strategis/SearchByAuthorStrategy.ts";
+import { SearchByCategoryStrategy } from "./strategis/SearchByCategory.ts";
 
 const bookRepository = new BookRepository
 const userRepository = new UserRepository
@@ -61,7 +61,7 @@ console.log("livros encontrados por categoria (ficção científica) =",booksByC
 
 // Testes de erros
 
-console.log("\n## testes de alguns erros ##");
+console.log("\n## testes de controle de alguns erros ##");
 
 
 console.log("\n-> executando o imprestimo com usuario e livros que não existem\n");

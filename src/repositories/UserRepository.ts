@@ -14,14 +14,14 @@ export class UserRepository implements IUserRepository{
     findById(id: number): User {
         const user = this.users.get(id)
         if (!user) {
-            throw new Error("livro não existe.");
+            throw new Error("usuario não existe.");
         }
         return user;
     }
 
     findAll(): User[] {
         if (this.users.size === 0) {
-            throw new Error("sem livros registrados.");
+            throw new Error("sem usuarios registrados.");
         }
         return Array.from(this.users.values())
     } 
