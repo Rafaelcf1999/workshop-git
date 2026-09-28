@@ -1,6 +1,6 @@
 import { Book } from "./entities/book.entity.ts";
 import { User } from "./entities/user.entity.ts";
-import { jsonMock } from "./mocks/mockjson.ts";
+import { jsonMock, JsonMock } from "./mocks/mockjson.ts";
 import { BookRepository } from "./repositories/book.repository.ts";
 import { LoanRepository } from "./repositories/loan.repository.ts";
 import { UserRepository } from "./repositories/user.repository.ts";
@@ -9,7 +9,7 @@ import { SearchAuthor } from "./strategies/searchAuthor.strategy.ts";
 import { SearchCategory } from "./strategies/searchCategory.strategy.ts";
 
 const app = () => {
-  const dados = JSON.parse(jsonMock);
+  const dados: JsonMock = JSON.parse(jsonMock);
   const bookRepository = new BookRepository();
   const userRepository = new UserRepository();
   const loanRepository = new LoanRepository();
@@ -22,13 +22,7 @@ const app = () => {
 
   //* Registrar livros */ ------
   const books = dados.books.map(
-    (book: {
-      id: number;
-      title: string;
-      author: string;
-      category: string;
-      quantity: number;
-    }) =>
+    (book) =>
       new Book(book.id, book.title, book.author, book.category, book.quantity),
   );
 
@@ -40,13 +34,11 @@ const app = () => {
   saveBooks.push(book3);
   saveBooks.push(book4);
 
-  library.registerBook(saveBooks)
+  library.registerBook(saveBooks);
   console.log("\n Livros cadastrados:", bookRepository.findAll());
 
   //* Registrar usuários */ ------
-  const users = dados.users.map(
-    (user: { id: number; name: string }) => new User(user.id, user.name),
-  );
+  const users = dados.users.map((user) => new User(user.id, user.name));
 
   const [user1, user2] = users;
 
@@ -67,16 +59,24 @@ const app = () => {
   //* Devolução de um livro */ ------
   library.giveBackBook(user1.id, book2.id);
 
-
   console.log("\n Devolução realizada:", loanRepository.findAll());
 
   //* Pesquisas por autor e categoria */ ------
   const searchAuthor = new SearchAuthor();
-  console.log("\n Pesquisa pelo autor: Aurthur Conan Doyle", library.search(searchAuthor, "Arthur Conan Doyle"));
-  console.log("\n Pesquisa pelo autor: George Orwell", library.search(searchAuthor, "George Orwell"));
+  console.log(
+    "\n Pesquisa pelo autor: Aurthur Conan Doyle",
+    library.search(searchAuthor, "Arthur Conan Doyle"),
+  );
+  console.log(
+    "\n Pesquisa pelo autor: George Orwell",
+    library.search(searchAuthor, "George Orwell"),
+  );
 
   const searchCategory = new SearchCategory();
-  console.log("\n Pesquisa pela categoria: drama", library.search(searchCategory, "drama"));
-}
+  console.log(
+    "\n Pesquisa pela categoria: drama",
+    library.search(searchCategory, "drama"),
+  );
+};
 
 app();

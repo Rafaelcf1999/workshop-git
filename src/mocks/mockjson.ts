@@ -47,5 +47,19 @@ export const jsonMock = `{
     }
   ]
 }`;
+// Mock simulando o recebimento de dados não registrados.
 
-// Mock simulando o recebimento de um JSON enviado pelo cliente
+export interface JsonMock {
+  books: {
+    id: number;
+    title: string;
+    author: string;
+    category: string;
+    quantity: number;
+  }[];
+
+  users: {
+    id: number;
+    name: string;
+  }[];
+}
