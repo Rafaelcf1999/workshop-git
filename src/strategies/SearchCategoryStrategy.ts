@@ -6,7 +6,7 @@ export default class SearchCategoryStrategy implements SearchStrategy {
     constructor(private readonly category: string) {
     }
     search(books: Book[]): Book[] {
-        return books.filter((books) => books.category === this.category)
+        return books.filter((book) => book.category === this.category)
     }
 
 }

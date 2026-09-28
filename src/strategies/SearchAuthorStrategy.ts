@@ -6,7 +6,7 @@ export default class SearchAuthorStrategy implements SearchStrategy {
     constructor(private readonly author:string) {}
 
     search(books: Book[]): Book[] {
-        return books.filter((books) => books.author === this.author)
+        return books.filter((book) => book.author === this.author)
     }
 
 }
