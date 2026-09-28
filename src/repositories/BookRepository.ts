@@ -1,5 +1,5 @@
 import { Book } from "../entities/Book.ts";
-import { IBookRepository } from "./interfaces/IBookRepository.ts";
+import type { IBookRepository } from "./interfaces/IBookRepository.ts";
 
 export class BookRepository implements IBookRepository {
   private books: Map<number, Book> = new Map();
