@@ -3,7 +3,7 @@ import type ILoanRepository from "./interfaces/ILoanRepository.ts";
 
 export default class LoanRepository implements ILoanRepository {
 
-    public loans: Loan[] = [];
+    private loans: Loan[] = [];
 
     save(loan: Loan): boolean {
 
@@ -16,13 +16,6 @@ export default class LoanRepository implements ILoanRepository {
         this.loans.push(loan);
         return true;
 
-        /*for (let loan of this.loans) {
-            if (loan.userId === userid && loan.bookId === bookid) {
-                throw new Error(`Usuário ${userid} já está com o livro ${bookid}.`)
-            }
-        }
-
-        */
     }
 
     remove(loan: Loan): boolean {
@@ -39,7 +32,7 @@ export default class LoanRepository implements ILoanRepository {
         }
 
         throw new Error(`Usuário ${loan.userId} não está com o livro ${loan.bookId}`)
-        //return false
+      
     }
 
     findAll(): Loan[] {

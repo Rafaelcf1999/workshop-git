@@ -9,9 +9,9 @@ import type SearchStrategy from "../strategies/SearchStrategy.ts";
 
 export default class LibraryService {
 
-    public books!: IBookRepository;
-    public users!: IUserRepository;
-    public loans!: ILoanRepository;
+    public books: IBookRepository;
+    public users: IUserRepository;
+    public loans: ILoanRepository;
 
     constructor(books: IBookRepository, users: IUserRepository, loans: ILoanRepository) {
         this.books = books;
@@ -19,25 +19,26 @@ export default class LibraryService {
         this.loans = loans;
     }
 
-    registerBook(book: Book) {
-        try {
-            this.books.save(book);
-            console.log("Livro registrado com sucesso!");
-        } catch (error) {
-            return console.error(error);
+    registerBook(books: Book[]) {
+        for (let book of books) {
+            try {
+                this.books.save(book);
+                console.log(`Livro: ${book.title} registrado com sucesso!`);
+            } catch (error) {
+                return console.error(error);
+            }
         }
 
-        /*if (!this.books.save(book)) {
-            return console.error(`Um livro com o ID ${book.id} já está cadastrado no sistema.`);
-        }*/
     }
 
-    registerUser(user: User) {
-        try {
-            this.users.save(user);
-            console.log("Usuário registrado com sucesso!");
-        } catch (error) {
-            return console.error(error);
+    registerUser(users: User[]) {
+        for (let user of users) {
+            try {
+                this.users.save(user);
+                console.log(`Usuário: ${user.name} registrado com sucesso!`);
+            } catch (error) {
+                return console.error(error);
+            }
         }
 
     }
@@ -47,21 +48,13 @@ export default class LibraryService {
             const user = this.users.findById(userId);
             const book = this.books.findById(bookId);
 
-            /*if (!user || !book) {
-                return console.error("ID de usuário ou livro inválido!");
-            }
-
-            if (book.getquantity() <= 0) {
-                return console.error("Livro indisponível!")
-            }*/
-
             book.decrease();
 
             const loan = new Loan(userId, bookId);
             this.loans.save(loan);
 
 
-            return console.log("Empréstimo concluído!");
+            return console.log(`Empréstimo concluído! ${user.name} emprestou ${book.title}`);
 
         } catch (error) {
             return console.error(error);
@@ -78,22 +71,11 @@ export default class LibraryService {
             this.loans.remove(loan);
 
             book.increase();
-            return console.log("Devolução concluída!");
+            return console.log(`Devolução Concluída! ${user.name} devolveu ${book.title}`);
 
         } catch (error) {
             return console.error(error);
         }
-
-
-        /*
-        
-        if (!user || !book) {
-            return console.error("ID de usuário ou livro inválido!");
-        }
-            
-        if (!giveBack) {
-            return console.error(`Usuário ${userId} não está com o livro ${bookId}`);
-        }*/
 
 
     }

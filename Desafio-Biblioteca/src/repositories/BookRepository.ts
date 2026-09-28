@@ -3,16 +3,10 @@ import type IBookRepository from "./interfaces/IBookRepository.ts";
 
 export default class BookRepository implements IBookRepository {
 
-    public books = new Map<number, Book>();
+    private books = new Map<number, Book>();
 
 
     save(book: Book): boolean {
-        /*for (let [bookid] of this.books) {
-            if (bookid === book.id) {
-                return false;
-            }
- 
-        }*/
        
         if(this.books.has(book.id)){
             console.error()
@@ -24,11 +18,6 @@ export default class BookRepository implements IBookRepository {
     }
 
     findById(id: number)  {
-        /*for (let [bookid] of this.books) {
-            if (bookid === id) {
-                return this.books.get(id);
-            }
-        }*/
 
         const book = this.books.get(id);
         

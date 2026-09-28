@@ -3,14 +3,9 @@ import User from "../entities/User.ts";
 
 export default class UserRepository implements IUserRepository {
 
-    public users = new Map<number, User>();
+    private users = new Map<number, User>();
     
     save(user: User): boolean {
-        /*for (let [userid] of this.users) {
-            if (userid === user.id) {
-                return false;
-            } 
-        }*/
 
         if(this.users.has(user.id)){
             throw new Error(`Um usuário com o ID ${user.id} já está cadastrado no sistema.`);
@@ -21,11 +16,6 @@ export default class UserRepository implements IUserRepository {
     }
 
     findById(id: number) {
-        /*for (let [userid] of this.users) {
-            if (userid === id) {
-                return this.users.get(id);
-            }
-        }*/
 
         const user = this.users.get(id);
 
