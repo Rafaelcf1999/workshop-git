@@ -1,6 +1,7 @@
 import { Book } from "./entities/book.entity.ts";
 import { User } from "./entities/user.entity.ts";
-import { jsonMock, JsonMock } from "./mocks/mockjson.ts";
+import type { JsonMock } from "./mocks/mockjson.ts";
+import { jsonMock } from "./mocks/mockjson.ts";
 import { BookRepository } from "./repositories/book.repository.ts";
 import { LoanRepository } from "./repositories/loan.repository.ts";
 import { UserRepository } from "./repositories/user.repository.ts";
