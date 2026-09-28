@@ -7,7 +7,7 @@ export default class BookRepository implements IBookRepository {
 
     save(book: Book): void {
         if(this.books.has(book.id)) {
-            throw new Error ("Já existe um livro com esse id cadastrado!!")
+            throw new Error (`Já existe um livro com o id ${book.id}!`)
         }
         this.books.set(book.id, book);
     }
@@ -16,7 +16,7 @@ export default class BookRepository implements IBookRepository {
         const book = this.books.get(id)
 
         if(book === undefined){
-            throw new Error (`Não tem ninguem com essa matrícula: ${id}`)
+            throw new Error (`O livro do id ${id} não foi encontrado`)
         }
 
         return book
