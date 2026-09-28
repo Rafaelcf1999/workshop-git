@@ -1,0 +1,17 @@
+{
+  "name": "desafio-bootcamp-ts",
+  "version": "1.0.0",
+  "description": "Esse é um desafio técnico do bootcamp | AWS TS + Fullstack com objetivo de criar um sistema de gerenciamento de Biblioteca em TS.",
+  "main": "index.ts",
+  "type": "module",
+  "scripts": {
+    "start": "node --experimental-transform-types src/index.ts",
+    "dev": "node --experimental-transform-types --watch src/index.ts"
+  },
+  "keywords": [
+    "Desafio",
+    "Desafio-tecnico"
+  ],
+  "author": "Richard Guilherme",
+  "license": "ISC"
+}
