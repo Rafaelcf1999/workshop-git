@@ -18,7 +18,7 @@ export class BookRepository implements IBookRepository {
     return book;
   }
 
-  findAll(): Book[] {
+  findAll(): Readonly<Book[]> {
     if (Array.from(this.saveBook.values()).length === 0)
       throw Error("No books registered");
 

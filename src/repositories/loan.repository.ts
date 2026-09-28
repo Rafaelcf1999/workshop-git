@@ -26,7 +26,7 @@ export class LoanRepository implements ILoanRepository {
     this.loan.splice(index, 1);
   }
 
-  findAll(): Loan[] {
-    return this.loan;
+  findAll(): ReadonlyArray<Loan> {
+    return [...this.loan];
   }
 }

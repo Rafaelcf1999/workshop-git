@@ -1,5 +1,5 @@
 import { Book } from "../entities/book.entity.ts";
 
 export interface SearchStrategy {
-  search(books: Book[], keyword: string): Book[];
+  search(books: Readonly<Book[]>, keyword: string): Book[];
 }

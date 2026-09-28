@@ -18,7 +18,7 @@ export class UserRepository implements IUserRepository {
     return user;
   }
 
-  findAll(): User[] {
+  findAll(): Readonly<User[]> {
     if (Array.from(this.saveUser.values()).length === 0)
       throw Error("No users registered");
 
