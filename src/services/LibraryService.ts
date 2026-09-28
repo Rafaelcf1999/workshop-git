@@ -4,7 +4,7 @@ import { Loan } from "../entities/Loan.js";
 import type {IBookRepository} from '../repositories/interfaces/IBookRepository.js'
 import type {IUserRepository} from '../repositories/interfaces/IUserRepository.js'
 import type {ILoanRepository} from '../repositories/interfaces/ILoanRepository.js'
-import type { SearchStrategy } from "../strategies/searchStrategy.js";
+import type { SearchStrategy } from "../strategies/SearchStrategy.js";
 
 export class LibraryService{
     constructor(
@@ -54,9 +54,9 @@ export class LibraryService{
             console.log(e);
         }
     }
-    search(value: string, searchType: SearchStrategy): void{
+    search(value: string, searchType: SearchStrategy): Book[] | undefined{
         try{
-            searchType.search(value);
+            return searchType.search(value);
         }catch(e){
             console.log(e);
         }
