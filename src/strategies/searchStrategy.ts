@@ -1,13 +1,36 @@
+import { Book } from "../entities/Book.js";
+import type { IBookRepository } from "../repositories/interfaces/IBookRepository.js";
+
 export interface SearchStrategy{
-    search(): [];
+    search(value: string): Book[];
 }
 export class SearchBookByAuthor implements SearchStrategy{
-    search(): [] {
-        
+    constructor(
+        protected books: IBookRepository
+    ){}
+    
+    search(value: string): Book[] {
+        let result: Book[] = [];
+        for(let book of this.books.findAll()){
+            if(book.author === value){
+                result.push(book);
+            }
+        }
+        return result;
     }
 }
 export class SearchBookByCategory implements SearchStrategy{
-    search(): [] {
-        
+    constructor(
+        protected books: IBookRepository
+    ){}
+
+    search(value: string): Book[] {
+        let result: Book[] = [];
+        for(let book of this.books.findAll()){
+            if(book.category === value){
+                result.push(book);
+            }
+        }
+        return result;
     }
 }
