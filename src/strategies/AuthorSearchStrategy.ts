@@ -1,5 +1,5 @@
 import { Book } from "../entities/Book.ts";
-import { SearchStrategy } from "./SearchStrategy.ts";
+import type { SearchStrategy } from "./SearchStrategy.ts";
 
 export class AuthorSearchStrategy implements SearchStrategy {
   constructor(private readonly author: string) {}
@@ -10,4 +10,3 @@ export class AuthorSearchStrategy implements SearchStrategy {
     );
   }
 }
-

@@ -1,5 +1,5 @@
 import { Book } from "../entities/Book.ts";
-import { SearchStrategy } from "./SearchStrategy.ts";
+import type { SearchStrategy } from "./SearchStrategy.ts";
 
 export class CategorySearchStrategy implements SearchStrategy {
   constructor(private readonly category: string) {}
@@ -10,4 +10,3 @@ export class CategorySearchStrategy implements SearchStrategy {
     );
   }
 }
-

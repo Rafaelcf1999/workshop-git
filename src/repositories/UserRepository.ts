@@ -1,5 +1,5 @@
 import { User } from "../entities/User.ts";
-import { IUserRepository } from "./interfaces/IUserRepository.ts";
+import type { IUserRepository } from "./interfaces/IUserRepository.ts";
 
 export class UserRepository implements IUserRepository {
   private users: Map<number, User> = new Map();
@@ -26,4 +26,3 @@ export class UserRepository implements IUserRepository {
     return Array.from(this.users.values());
   }
 }
-

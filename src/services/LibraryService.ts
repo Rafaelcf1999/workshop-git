@@ -1,10 +1,10 @@
 import { Book } from "../entities/Book.ts";
 import { User } from "../entities/User.ts";
 import { Loan } from "../entities/Loan.ts";
-import { IBookRepository } from "../repositories/interfaces/IBookRepository.ts";
-import { IUserRepository } from "../repositories/interfaces/IUserRepository.ts";
-import { ILoanRepository } from "../repositories/interfaces/ILoanRepository.ts";
-import { SearchStrategy } from "../strategies/SearchStrategy.ts";
+import type { IBookRepository } from "../repositories/interfaces/IBookRepository.ts";
+import type { IUserRepository } from "../repositories/interfaces/IUserRepository.ts";
+import type { ILoanRepository } from "../repositories/interfaces/ILoanRepository.ts";
+import type { SearchStrategy } from "../strategies/SearchStrategy.ts";
 
 export class LibraryService {
   constructor(
@@ -72,4 +72,3 @@ export class LibraryService {
     }
   }
 }
-
