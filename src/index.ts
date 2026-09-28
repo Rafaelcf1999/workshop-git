@@ -39,6 +39,8 @@ libraryService.registerUser([user1, user2]);
 
 libraryService.loanBook(user1.id, book1.id);
 
+libraryService.giveBackBook(user1.id, book1.id);
+
 const booksByAuthor = libraryService.search(searchByAuthor, "stephen");
 
 console.log(booksByAuthor);
