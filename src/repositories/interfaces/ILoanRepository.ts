@@ -1,7 +1,7 @@
-import { User } from "../../entities/User.js";
+import { Loan } from "../../entities/Loan.js";
 
-export interface IUserRepository{
-    save(user: User): void;
-    findById(id: number): User | undefined;
-    findAll(): User[];
+export interface ILoanRepository{
+    save(userId: number, bookId: number): void;
+    remove(userId: number, bookId: number): void;
+    findAll(): Loan[];
 }

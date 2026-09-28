@@ -4,21 +4,21 @@ export class Book{
         public title: string,
         public author: string,
         public category: string,
-        private _quantity: number
+        private quantity: number
     ){}
-    get quantity(): number{
-        return this._quantity;
+    getQuantity(): number{
+        return this.quantity;
     }
     decrease(): void{
-        if(this._quantity <= 0){
-            throw new Error('No copies available');
+        if(this.quantity <= 0){
+            throw new Error('No copies available.');
         } else {
-            this._quantity--;
+            this.quantity--;
             return
         }
     }
     increase(): void{
-        this._quantity++;
+        this.quantity++;
         return
     }
 }
