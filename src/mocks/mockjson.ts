@@ -27,6 +27,13 @@ export const jsonMock = `{
       "author": "George Orwell",
       "category": "ficção",
       "quantity": 2
+    },
+    {
+      "id": 5,
+      "title": "Código limpo",
+      "author": "Robert C. Martin",
+      "category": "programação",
+      "quantity": 5
     }
   ],
   "users": [
