@@ -9,11 +9,11 @@ export default class UserRepository implements IUserRepository {
         /*for (let [userid] of this.users) {
             if (userid === user.id) {
                 return false;
-            }
+            } 
         }*/
 
         if(this.users.has(user.id)){
-            return false;
+            throw new Error(`Um usuário com o ID ${user.id} já está cadastrado no sistema.`);
         }
 
         this.users.set(user.id, user);
@@ -27,7 +27,13 @@ export default class UserRepository implements IUserRepository {
             }
         }*/
 
-        return this.users.get(id);
+        const user = this.users.get(id);
+
+        if(!user){
+            throw new Error(`Usuário com o ID ${id} não encontrado.`)
+        }
+
+        return user;
     }
 
     findAll(): User[] {

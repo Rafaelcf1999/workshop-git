@@ -5,24 +5,32 @@ export default class LoanRepository implements ILoanRepository {
 
     public loans: Loan[] = [];
 
-    save(userid: number, bookid: number): boolean {
+    save(loan: Loan): boolean {
 
-        for (let loan of this.loans) {
-            if (loan.userId === userid && loan.bookId === bookid) {
-                return false
+        for(let oneloan of this.loans){
+             if (oneloan.userId === loan.userId && oneloan.bookId === loan.bookId) {
+                throw new Error(`Usuário ${loan.userId} já está com o livro ${loan.bookId}.`)
             }
         }
 
-        this.loans.push(new Loan(userid, bookid));
+        this.loans.push(loan);
         return true;
+
+        /*for (let loan of this.loans) {
+            if (loan.userId === userid && loan.bookId === bookid) {
+                throw new Error(`Usuário ${userid} já está com o livro ${bookid}.`)
+            }
+        }
+
+        */
     }
 
-    remove(userid: number, bookid: number): boolean {
+    remove(loan: Loan): boolean {
 
         let loancount = 0;
 
-        for (let loan of this.loans) {
-            if (loan.userId === userid && loan.bookId === bookid) {
+        for (let oneloan of this.loans) {
+            if (oneloan.userId === loan.userId && oneloan.bookId === loan.bookId) {
                 this.loans.splice(loancount, 1);
                 return true;
             }
@@ -30,11 +38,12 @@ export default class LoanRepository implements ILoanRepository {
             loancount++;
         }
 
-        return false
+        throw new Error(`Usuário ${loan.userId} não está com o livro ${loan.bookId}`)
+        //return false
     }
 
     findAll(): Loan[] {
-        return Array.from(this.loans.values());
+        return this.loans;
     }
 
 }

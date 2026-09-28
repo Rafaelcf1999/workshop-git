@@ -19,16 +19,14 @@ export default class Book {
     }
 
     decrease() {
-        /*if (this._quantity <= 0) {
-            console.error("Livro indisponível!")
-            return false;
-        }*/
+        if (this._quantity <= 0) {
+            throw new Error(`Nenhuma cópia disponível.`)
+        }
 
         this._quantity--;
-        //return true;
     }
 
-    getquantity(): number {
+    getQuantity(): number {
         return this._quantity;
     }
 }

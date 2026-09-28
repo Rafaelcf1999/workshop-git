@@ -21,7 +21,7 @@ console.log("testes-------------------")
 
 console.log(biblioteca);
 
-
+ 
 biblioteca.registerBook(livro1);
 biblioteca.registerBook(livro2);
 biblioteca.registerBook(livro3);

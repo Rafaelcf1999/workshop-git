@@ -15,7 +15,8 @@ export default class BookRepository implements IBookRepository {
         }*/
        
         if(this.books.has(book.id)){
-            return false;
+            console.error()
+            throw new Error(`Um livro com o ID ${book.id} já está cadastrado no sistema.`);
         }
         
         this.books.set(book.id, book);
@@ -29,11 +30,13 @@ export default class BookRepository implements IBookRepository {
             }
         }*/
 
-        if(!this.books.has(id)){
-            return undefined;
+        const book = this.books.get(id);
+        
+        if(!book){
+            throw new Error(`Livro com o ID ${id} não encontrado.`);
         }
 
-        return this.books.get(id);
+        return book;
     }
 
     findAll(): Book[] {

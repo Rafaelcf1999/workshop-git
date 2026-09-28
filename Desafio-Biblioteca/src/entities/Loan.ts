@@ -6,4 +6,4 @@ export default class Loan {
         this.userId = userId;
         this.bookId = bookId;
     }
-}
+} 

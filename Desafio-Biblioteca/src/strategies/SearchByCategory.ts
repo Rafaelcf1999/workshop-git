@@ -5,4 +5,4 @@ export default class SearchByCategory implements SearchStrategy{
     search(books: Book[], value: string): Book[] {
         return books.filter(book => book.category === value);
     }
-}
+} 
