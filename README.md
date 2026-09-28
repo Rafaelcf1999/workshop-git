@@ -1,31 +1,26 @@
-# workshop-git
-Projeto destinado a ensinar os comandos básicos do github no workshop fellowship
+# Desafio: Sistema de Gerenciamento de Biblioteca
 
+## Contexto
 
-### História do Git 
-- Documentação: https://git-scm.com/book/pt-pt/v2/Come%C3%A7ando-Uma-Breve-Hist%C3%B3ria-do-Git
+Você foi contratado para desenvolver o backend de um sistema de
+gerenciamento de biblioteca. O sistema deve permitir o cadastro de
+livros e usuários, o controle de empréstimos e a busca de livros por
+diferentes critérios.
 
-### Comandos iniciais 
-- git clone <link-do-repo>
-- git commit -m "mensagem"
-- git add <nome-do-arquivo> ou git add .
-- git push
-- git pull
-- git merge <branch>
-- git checkout <nome-da-branch>
-- git checkout -b <novo-nome-da-branch>
+O foco deste desafio não é apenas fazer o código funcionar, mas sim
+escrever código TypeScript limpo, bem tipado e seguindo boas práticas
+e padrões de projeto.
 
+## Requisitos funcionais
 
+O sistema deve ser capaz de:
 
-### Commit Semânticos 
-- feat: Indica a criação de uma nova funcionalidade para o usuário.
-- fix: Utilizado para a correção de erros e bugs.
-- docs: Mudanças exclusivas na documentação (como o README).
-- test: Criação ou alteração de testes automatizados.
-- refactor: Alteração de código que não corrige bugs nem adiciona recursos, mas melhora a estrutura.
-- style: Mudanças de formatação que não alteram o significado do código (espaços, ponto e vírgula).
-- chore: Tarefas de manutenção de build ou ferramentas, sem mexer no código de produção
-
-## Atividade
-
-- Como primeira atividade realizaremos um Pull Request para a main utilizando um commit 
+1. Cadastrar livros, cada um com: id, título, autor,
+   categoria e quantidade de cópias disponíveis.
+2. Cadastrar usuários, cada um com: id e nome.
+3. Realizar empréstimos de um livro para um usuário, decrementando a quantidade de cópias disponíveis.
+4. Registrar devoluções de um livro por um usuário,
+   incrementando a quantidade de cópias disponíveis.
+5. Buscar livros por autor ou por categoria, de forma extensível
+   (novos critérios de busca devem poder ser adicionados sem
+   alterar o código existente).
