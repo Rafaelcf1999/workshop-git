@@ -18,16 +18,11 @@ npm install
 npm start
 ```
 
-The example in [`src/index.ts`](src/index.ts) registers two books and two users,
-lends one book, and prints the results of an author search and a category
-search:
-
-```text
-Books by author:
-- Clean Code | Robert C. Martin | Technology | 1 available
-Books by category:
-- The Hobbit | J. R. R. Tolkien | Fantasy | 1 available
-```
+The example in [`src/index.ts`](src/index.ts) registers four books and two
+users, displays the catalog, lends books, searches by author and category, and
+returns the loans. It also tries invalid operations to show that the service
+logs errors while the program continues. Those intentional errors appear on
+standard error when you run `npm start`.
 
 ## Commands
 

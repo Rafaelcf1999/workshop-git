@@ -7,32 +7,100 @@ import { LibraryService } from "./services/LibraryService.ts";
 import { AuthorSearchStrategy } from "./strategies/AuthorSearchStrategy.ts";
 import { CategorySearchStrategy } from "./strategies/CategorySearchStrategy.ts";
 
-const library = new LibraryService(
-  new BookRepository(),
-  new UserRepository(),
-  new LoanRepository(),
+const bookRepository = new BookRepository();
+const userRepository = new UserRepository();
+const loanRepository = new LoanRepository();
+
+const libraryService = new LibraryService(
+  bookRepository,
+  userRepository,
+  loanRepository,
 );
 
-library.registerBook([
-  new Book(1, "Clean Code", "Robert C. Martin", "Technology", 2),
-  new Book(2, "The Hobbit", "J. R. R. Tolkien", "Fantasy", 1),
+const pragmaticProgrammer = new Book(
+  1,
+  "The Pragmatic Programmer",
+  "Andrew Hunt and David Thomas",
+  "Software Engineering",
+  2,
+);
+const refactoring = new Book(
+  2,
+  "Refactoring",
+  "Martin Fowler",
+  "Software Engineering",
+  1,
+);
+const dune = new Book(3, "Dune", "Frank Herbert", "Science Fiction", 1);
+const duneMessiah = new Book(
+  4,
+  "Dune Messiah",
+  "Frank Herbert",
+  "Science Fiction",
+  1,
+);
+
+libraryService.registerBook([
+  pragmaticProgrammer,
+  refactoring,
+  dune,
+  duneMessiah,
 ]);
+libraryService.registerUser([new User(1, "Clara"), new User(2, "Diego")]);
 
-library.registerUser([new User(1, "Ana"), new User(2, "Bruno")]);
-library.loanBook(1, 1);
+function printBooks(books: Book[]): void {
+  console.table(
+    books.map((book) => ({
+      id: book.id,
+      title: book.title,
+      author: book.author,
+      category: book.category,
+      availableCopies: book.getQuantity(),
+    })),
+  );
+}
 
-const byAuthor = library.search(new AuthorSearchStrategy(), "Martin");
-const byCategory = library.search(new CategorySearchStrategy(), "Fantasy");
+function printLoans(): void {
+  const loans = loanRepository.findAll();
+  console.log(`Active loans: ${loans.length}`);
 
-function printResults(label: string, books: Book[]): void {
-  console.log(label);
-
-  for (const book of books) {
-    console.log(
-      `- ${book.title} | ${book.author} | ${book.category} | ${book.getQuantity()} available`,
-    );
+  if (loans.length > 0) {
+    console.table(loans);
   }
 }
 
-printResults("Books by author:", byAuthor);
-printResults("Books by category:", byCategory);
+console.log("=== Registered books ===");
+printBooks(bookRepository.findAll());
+console.log("=== Registered users ===");
+console.table(userRepository.findAll());
+
+console.log("\n=== Lending books ===");
+libraryService.loanBook(1, 1);
+libraryService.loanBook(2, 3);
+console.log(
+  `Copies of "${pragmaticProgrammer.title}": ${pragmaticProgrammer.getQuantity()}`,
+);
+console.log(`Copies of "${dune.title}": ${dune.getQuantity()}`);
+printLoans();
+
+console.log("\n=== Search by author: Frank Herbert ===");
+printBooks(libraryService.search(new AuthorSearchStrategy(), "Frank Herbert"));
+
+console.log("\n=== Search by category: Software Engineering ===");
+printBooks(libraryService.search(new CategorySearchStrategy(), "Software Engineering"));
+
+console.log("\n=== Handled errors ===");
+libraryService.loanBook(1, 1);
+libraryService.loanBook(1, 3);
+libraryService.loanBook(99, 2);
+libraryService.loanBook(1, 99);
+libraryService.giveBackBook(1, 4);
+console.log("Inventory and loans remain unchanged after these errors:");
+printBooks([pragmaticProgrammer, dune, duneMessiah]);
+printLoans();
+
+console.log("\n=== Returning books ===");
+libraryService.giveBackBook(1, 1);
+libraryService.giveBackBook(2, 3);
+printBooks([pragmaticProgrammer, dune]);
+printLoans();
