@@ -38,9 +38,15 @@ export class LibraryService {
       const user = this.user.findById(userId);
       const book = this.book.findById(bookId);
 
-      this.loan.save(new Loan(user.id, book.id));
+      const loan = new Loan(user.id, book.id)
 
       book.decrease();
+      try {
+        this.loan.save(loan);
+      } catch (error) {
+        book.increase();
+        throw error;
+      }
     } catch (error) {
       console.error(error);
     }
