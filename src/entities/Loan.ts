@@ -1,6 +1,6 @@
 export class Loan {
     constructor (
-        public readonly Userid: number,
+        public readonly userId: number,
         public readonly bookId: number,
     ) {}
 }
