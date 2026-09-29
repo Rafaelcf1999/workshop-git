@@ -1,0 +1,21 @@
+{
+  "name": "library-management-system",
+  "version": "1.0.0",
+  "description": "Sistema de Gerenciamento de Biblioteca em TypeScript com SOLID e Design Patterns",
+  "type": "module",
+  "scripts": {
+    "start": "node --experimental-transform-types src/index.ts",
+    "dev": "node --experimental-transform-types --watch src/index.ts"
+  },
+  "keywords": [
+    "typescript",
+    "solid",
+    "design-patterns",
+    "repository-pattern",
+    "strategy-pattern",
+    "clean-code"
+  ],
+  "author": "Augusto Mendonca",
+  "license": "ISC"
+}
+
