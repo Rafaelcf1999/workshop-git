@@ -11,9 +11,3 @@ TypeScript, aplicando Repository Pattern e Strategy Pattern. Desafio do Fellowsh
 ## Tecnologias
 - Node.js (24.10+) com suporte nativo a TypeScript
   (`--experimental-transform-types`, sem etapa de compilação)
-
-## Como rodar
-\`\`\`bash
-npm install
-npm start
-\`\`\`
