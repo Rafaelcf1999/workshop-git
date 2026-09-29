@@ -26,9 +26,3 @@ Desafio de backend desenvolvido em TypeScript aplicando boas práticas de Progra
 npm start
 ```
 
-Para rodar com live-reload (watch mode):
-
-```bash
-npm run dev
-```
-
