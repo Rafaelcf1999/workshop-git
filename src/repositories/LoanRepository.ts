@@ -37,9 +37,7 @@ export default class LoanRepository implements ILoanRepository {
   }
 
   findAll(): Loan[] {
-    if (this.loans.length === 0) {
-      throw new Error('No loans registered in the system.');
-    }
-    return this.loans;
+  return [...this.loans];
   }
 }
+
