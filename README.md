@@ -1,31 +1,68 @@
-# workshop-git
-Projeto destinado a ensinar os comandos básicos do github no workshop fellowship
+# Library Management System
 
+An in-memory library application written in TypeScript. It registers books and
+users, lends and returns books, tracks available copies, and searches the
+catalog by author or category.
 
-### História do Git 
-- Documentação: https://git-scm.com/book/pt-pt/v2/Come%C3%A7ando-Uma-Breve-Hist%C3%B3ria-do-Git
+## Requirements
 
-### Comandos iniciais 
-- git clone <link-do-repo>
-- git commit -m "mensagem"
-- git add <nome-do-arquivo> ou git add .
-- git push
-- git pull
-- git merge <branch>
-- git checkout <nome-da-branch>
-- git checkout -b <novo-nome-da-branch>
+- Node.js 24.10 or newer
+- npm
 
+Node runs the TypeScript source directly. No build step is needed.
 
+## Get started
 
-### Commit Semânticos 
-- feat: Indica a criação de uma nova funcionalidade para o usuário.
-- fix: Utilizado para a correção de erros e bugs.
-- docs: Mudanças exclusivas na documentação (como o README).
-- test: Criação ou alteração de testes automatizados.
-- refactor: Alteração de código que não corrige bugs nem adiciona recursos, mas melhora a estrutura.
-- style: Mudanças de formatação que não alteram o significado do código (espaços, ponto e vírgula).
-- chore: Tarefas de manutenção de build ou ferramentas, sem mexer no código de produção
+```bash
+npm install
+npm start
+```
 
-## Atividade
+The example in [`src/index.ts`](src/index.ts) registers four books and two
+users, displays the catalog, lends books, searches by author and category, and
+returns the loans. It also tries invalid operations to show that the service
+logs errors while the program continues. Those intentional errors appear on
+standard error when you run `npm start`.
 
-- Como primeira atividade realizaremos um Pull Request para a main utilizando um commit 
+## Commands
+
+| Command | Purpose |
+| --- | --- |
+| `npm start` | Run the example once. |
+| `npm run dev` | Rerun the example when source files change. |
+| `npm test` | Run the repository, strategy, and service tests. |
+| `npm run typecheck` | Check TypeScript types without generating files. |
+
+## How the project is organized
+
+| Path | Responsibility |
+| --- | --- |
+| `src/entities/` | `Book`, `User`, and `Loan` models. `Book` controls stock through its methods. |
+| `src/repositories/interfaces/` | Contracts for storing books, users, and loans. |
+| `src/repositories/` | In-memory repositories backed by maps and an array. |
+| `src/strategies/` | The search contract and author/category search implementations. |
+| `src/services/LibraryService.ts` | Registration, loans, returns, and search using injected repository interfaces. |
+| `tests/` | Automated checks for the domain behavior. |
+
+Book and user IDs must be unique. A user cannot have two active loans for the
+same book, and a book cannot be lent when no copies are available. Repository
+methods report invalid operations with errors; `LibraryService` logs those
+errors with `console.error` instead of throwing them to its caller. A failed
+search returns an empty list. All data is lost when the process exits.
+
+## Service methods
+
+| Method | Behavior |
+| --- | --- |
+| `registerBook(books)` | Register a list of books. |
+| `registerUser(users)` | Register a list of users. |
+| `loanBook(userId, bookId)` | Lend a book and decrease its available copies. |
+| `giveBackBook(userId, bookId)` | Record a return and restore one available copy. |
+| `search(strategy, query)` | Return books matched by the chosen strategy. |
+
+## Add another search criterion
+
+Create a class in `src/strategies/` that implements `SearchStrategy.search`,
+which receives the book list and a query and returns matching books. Pass an
+instance to `LibraryService.search(strategy, query)`. The service does not need
+to change when a new strategy is added.
