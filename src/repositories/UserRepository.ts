@@ -1,5 +1,5 @@
 import User from "../entities/User.ts";
-import IUserRepository from "./interfaces/IUserRepository.ts";
+import type IUserRepository from "./interfaces/IUserRepository.ts";
 
 export default class UserRepository implements IUserRepository{
 

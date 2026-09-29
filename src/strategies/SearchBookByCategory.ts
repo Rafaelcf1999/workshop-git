@@ -1,5 +1,5 @@
 import Book from "../entities/Book.ts";
-import IBookSearchStrategy from "./interfaces/IBookSearchStrategy.ts";
+import type IBookSearchStrategy from "./interfaces/IBookSearchStrategy.ts";
 
 export default class SearchBookByCategory implements IBookSearchStrategy{
 
