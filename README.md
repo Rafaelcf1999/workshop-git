@@ -1,31 +1,55 @@
-# workshop-git
-Projeto destinado a ensinar os comandos básicos do github no workshop fellowship
+# 📚 Sistema de Gerenciamento de Biblioteca
 
+Backend para gerenciamento de biblioteca desenvolvido em **TypeScript** e **Node.js**, focado em código limpo, tipagem forte, orientação a objetos e aplicação dos padrões de projeto **Repository Pattern** e **Strategy Pattern**.
 
-### História do Git 
-- Documentação: https://git-scm.com/book/pt-pt/v2/Come%C3%A7ando-Uma-Breve-Hist%C3%B3ria-do-Git
+---
 
-### Comandos iniciais 
-- git clone <link-do-repo>
-- git commit -m "mensagem"
-- git add <nome-do-arquivo> ou git add .
-- git push
-- git pull
-- git merge <branch>
-- git checkout <nome-da-branch>
-- git checkout -b <novo-nome-da-branch>
+## 🛠️ Tecnologias e Recursos
 
+- **Node.js**: v24.10+ (com suporte nativo ao `--experimental-transform-types`)
+- **TypeScript**: Tipagem estática, modulação nativa ESM e _Parameter Properties_
+- **npm**: Gerenciador de pacotes
 
+---
 
-### Commit Semânticos 
-- feat: Indica a criação de uma nova funcionalidade para o usuário.
-- fix: Utilizado para a correção de erros e bugs.
-- docs: Mudanças exclusivas na documentação (como o README).
-- test: Criação ou alteração de testes automatizados.
-- refactor: Alteração de código que não corrige bugs nem adiciona recursos, mas melhora a estrutura.
-- style: Mudanças de formatação que não alteram o significado do código (espaços, ponto e vírgula).
-- chore: Tarefas de manutenção de build ou ferramentas, sem mexer no código de produção
+## 📐 Arquitetura e Padrões de Projeto
 
-## Atividade
+O projeto foi estruturado seguindo os princípios **SOLID**:
 
-- Como primeira atividade realizaremos um Pull Request para a main utilizando um commit 
+1. **Entidades (`src/entities/`)**: Representam os dados do domínio (`Book`, `User`, `Loan`). O controle de estoque da classe `Book` é feito com atributo privado (`quantity`) e métodos encapsulados (`increase`, `decrease`, `getQuantity`).
+2. **Repository Pattern (`src/repositories/`)**:
+   - **Interfaces (`src/repositories/interfaces/`)**: Isolam as abstrações de persistência de dados (`IBookRepository`, `IUserRepository`, `ILoanRepository`).
+   - **Implementações Concretas**: Repositórios em memória utilizando coleções do JavaScript/TypeScript (`Map` e `Array`).
+3. **Strategy Pattern (`src/strategies/`)**: Permite que novas regras de busca por livros (ex: por autor, por categoria, por título) sejam adicionadas sem alterar o código existente (**Open/Closed Principle**).
+4. **Dependency Injection (`src/services/LibraryService.ts`)**: O serviço principal depende exclusivamente das _interfaces_ dos repositórios e estratégias, garantindo baixo acoplamento e facilidade para testes.
+5. **Tratamento de Erros**: O `LibraryService` captura exceções lançadas pelas camadas inferiores e exibe logs via `console.error` sem propagar erros para a chamada principal.
+
+---
+
+## 📂 Estrutura de Pastas
+
+```text
+.
+├── package.json
+├── README.md
+└── src/
+    ├── entities/
+    │   ├── Book.ts
+    │   ├── User.ts
+    │   └── Loan.ts
+    ├── repositories/
+    │   ├── interfaces/
+    │   │   ├── IBookRepository.ts
+    │   │   ├── IUserRepository.ts
+    │   │   └── ILoanRepository.ts
+    │   ├── BookRepository.ts
+    │   ├── UserRepository.ts
+    │   └── LoanRepository.ts
+    ├── services/
+    │   └── LibraryService.ts
+    ├── strategies/
+    │   ├── SearchStrategy.ts
+    │   ├── AuthorSearchStrategy.ts
+    │   └── CategorySearchStrategy.ts
+    └── index.ts
+```
