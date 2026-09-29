@@ -1,0 +1,27 @@
+import Book from "./entities/Book.ts";
+import User from "./entities/User.ts";
+import { makeLibraryService } from "./factories/MakeLibraryService.ts";
+import SearchBookByAuthor from "./strategies/SearchBookByAuthor.ts";
+import { SearchBookByCategory } from "./strategies/SearchBookByCategory.ts";
+
+const libraryService = makeLibraryService();
+
+// Cadastra livros e usuários
+const book1 = new Book(1, 'O Hobbit', 'J.R.R. Tolkien', 'Fantasia', 3);
+const book2 = new Book(2, 'Duna', 'Frank Herbert', 'Ficção Científica', 2);
+
+const user1 = new User(1, 'Ana');
+const user2 = new User(2, 'Carlos');
+
+libraryService.registerBook(book1, book2);
+libraryService.registerUsers(user1, user2);
+
+// Realiza um empréstimo
+libraryService.loanBook(user1.id, book1.id);
+
+// Busca por autor e por categoria
+const resultByAuthor = libraryService.search(new SearchBookByAuthor(), 'Frank Herbert');
+const resultByCategory = libraryService.search(new SearchBookByCategory(), 'Fantasia');
+
+console.log('Busca por autor:', resultByAuthor);
+console.log('Busca por categoria:', resultByCategory);
