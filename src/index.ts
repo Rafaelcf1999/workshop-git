@@ -75,7 +75,7 @@ for (const book of categoryResults1) {
     console.log(`- ${book.title} (Autor: ${book.author})`);
 }
 
-//buscando por categoria válida 'ficção cientifica'
+//buscando por categoria válida 'história'
 console.log("\nBUSCA POR CATEGORIA:");
 const categoryResults2 = library.search(searchByCategory, "História");
 for (const book of categoryResults2) {
