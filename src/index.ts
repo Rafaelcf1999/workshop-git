@@ -32,3 +32,5 @@ libraryService.loanBook(1, 6);
 libraryService.search(new SearchByCategoryStrategy("Romance"));
 libraryService.search(new SearchByAuthorStrategy("Suzanne Collins"));
 
+libraryService.giveBackBook(1, 1);
+
