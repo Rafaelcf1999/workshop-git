@@ -6,6 +6,11 @@ import type { IUserRepository } from "../repositories/interfaces/IUserRepository
 import type { ILoanRepository } from "../repositories/interfaces/ILoanRepository.ts";
 import type { SearchStrategy } from "../strategies/SearchStrategy.ts";
 
+/**
+ * Serviço orquestrador da biblioteca.
+ * Depende exclusivamente das interfaces dos repositórios (Inversão de Dependências)
+ * e trata exceções internamente sem propagá-las.
+ */
 export class LibraryService {
   private books: IBookRepository;
   private users: IUserRepository;
@@ -21,6 +26,9 @@ export class LibraryService {
     this.loans = loans;
   }
 
+  /**
+   * Salva uma lista de livros no repositório.
+   */
   public registerBook(books: Book[]): void {
     try {
       for (const book of books) {
@@ -31,6 +39,9 @@ export class LibraryService {
     }
   }
 
+  /**
+   * Salva uma lista de usuários no repositório.
+   */
   public registerUser(users: User[]): void {
     try {
       for (const user of users) {
@@ -41,6 +52,9 @@ export class LibraryService {
     }
   }
 
+  /**
+   * Busca usuário e livro, decrementa o estoque e registra o empréstimo.
+   */
   public loanBook(userId: number, bookId: number): void {
     try {
       const user = this.users.findById(userId);
@@ -51,10 +65,16 @@ export class LibraryService {
       const loan = new Loan(user.id, book.id);
       this.loans.save(loan);
     } catch (error) {
-      console.error("Error loaning book (User ID: ${userId}, Book ID: ${bookId}):", error);
+      console.error(
+        `Error loaning book (User ID: ${userId}, Book ID: ${bookId}):`,
+        error
+      );
     }
   }
 
+  /**
+   * Busca usuário e livro, incrementa o estoque e remove o empréstimo.
+   */
   public giveBackBook(userId: number, bookId: number): void {
     try {
       const user = this.users.findById(userId);
@@ -64,10 +84,16 @@ export class LibraryService {
 
       this.loans.remove(user.id, book.id);
     } catch (error) {
-      console.error("Error giving back book (User ID: ${userId}, Book ID: ${bookId}):", error);
+      console.error(
+        `Error giving back book (User ID: ${userId}, Book ID: ${bookId}):`,
+        error
+      );
     }
   }
 
+  /**
+   * Executa a busca delegando para a estratégia de busca recebida.
+   */
   public search(strategy: SearchStrategy): Book[] | undefined {
     try {
       const allBooks = this.books.findAll();
