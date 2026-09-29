@@ -23,13 +23,17 @@ Uma aplicação desenvolvida em TypeScript para gerenciamento de biblioteca, apl
 
 ```
 biblioteca/
+├── node_modules/
 ├── src/
 │   ├── entities/
 │   │   ├── Book.ts            # Modelo e regras de quantidade do livro
 │   │   ├── User.ts            # Modelo de usuário
 │   │   └── Loan.ts            # Modelo de registro de empréstimo
 │   ├── repositories/
-│   │   ├── interfaces/        # Contratos dos repositórios
+│   │   ├── interfaces/
+│   │   │   ├── IBookRepository.ts  # Contrato do repositório de livros
+│   │   │   ├── IUserRepository.ts  # Contrato do repositório de usuários
+│   │   │   └── ILoanRepository.ts  # Contrato do repositório de empréstimos
 │   │   ├── BookRepository.ts  # Armazenamento em memória 
 │   │   ├── UserRepository.ts  # Armazenamento em memória 
 │   │   └── LoanRepository.ts  # Armazenamento em memória 
@@ -41,6 +45,6 @@ biblioteca/
 │   │   └── LibraryService.ts  # Camada de orquestração das regras de negócio
 │   └── index.ts               # Ponto de entrada e cenários de uso da aplicação
 ├── package.json
-├── tsconfig.json
+├── package-lock.json
 └── README.md
 ```
