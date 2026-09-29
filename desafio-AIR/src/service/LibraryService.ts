@@ -4,6 +4,7 @@ import type User from "../entities/User.js";
 import type { IBookRepository } from "../repositories/interfaces/IBookRepository.js";
 import type { ILoanRepository } from "../repositories/interfaces/ILoanRepository.js";
 import type { IUserRepository } from "../repositories/interfaces/IUserRepository.js";
+import type ISearchBookStrategy from "../strategies/interfaces/ISearchBookStrategy.js";
 
 export default class LibraryService {
 
@@ -72,4 +73,17 @@ export default class LibraryService {
             }
         }
     }
+
+    search(strategy: ISearchBookStrategy, attr: string | number): Book[] {
+        try {
+            const allBooks = this.books.findAll();
+            return strategy.search(allBooks, attr);
+
+        } catch (error) {
+             if (error instanceof Error) {
+            console.error(error.message);
+        } 
+        return [];
+    }
+  }
 }
