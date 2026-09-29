@@ -1,8 +1,8 @@
-import Book from "./entities/Book.js";
-import User from "./entities/User.js";
-import { makeLibraryService } from "./factories/MakeLibraryService.js";
-import SearchBookByAuthor from "./strategies/SearchBookByAuthor.js";
-import { SearchBookByCategory } from "./strategies/SearchBookByCategory.js";
+import Book from "./entities/Book.ts";
+import User from "./entities/User.ts";
+import { makeLibraryService } from "./factories/MakeLibraryService.ts";
+import SearchBookByAuthor from "./strategies/SearchBookByAuthor.ts";
+import { SearchBookByCategory } from "./strategies/SearchBookByCategory.ts";
 
 const libraryService = makeLibraryService();
 

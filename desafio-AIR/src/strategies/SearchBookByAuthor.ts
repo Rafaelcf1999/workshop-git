@@ -1,5 +1,5 @@
-import type Book from "../entities/Book.js";
-import type ISearchBookStrategy from "./interfaces/ISearchBookStrategy.js";
+import type Book from "../entities/Book.ts";
+import type ISearchBookStrategy from "./interfaces/ISearchBookStrategy.ts";
 
 export default class SearchBookByAuthor implements ISearchBookStrategy {
 

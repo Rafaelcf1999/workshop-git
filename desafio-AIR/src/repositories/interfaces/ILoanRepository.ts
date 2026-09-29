@@ -1,4 +1,4 @@
-import type Loan from "../../entities/Loan.js";
+import type Loan from "../../entities/Loan.ts";
 
 export interface ILoanRepository {
 

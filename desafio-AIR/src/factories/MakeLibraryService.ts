@@ -1,7 +1,7 @@
-import BookRepository from "../repositories/BookRepository.js";
-import LoanRepository from "../repositories/LoanRepository.js";
-import UserRepository from "../repositories/UserRepository.js";
-import LibraryService from "../service/LibraryService.js";
+import BookRepository from "../repositories/BookRepository.ts";
+import LoanRepository from "../repositories/LoanRepository.ts";
+import UserRepository from "../repositories/UserRepository.ts";
+import LibraryService from "../service/LibraryService.ts";
 
 export function makeLibraryService(): LibraryService {
   const bookRepository = new BookRepository();

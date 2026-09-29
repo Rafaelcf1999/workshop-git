@@ -1,5 +1,5 @@
-import type User from "../entities/User.js";
-import type { IUserRepository } from "./interfaces/IUserRepository.js";
+import type User from "../entities/User.ts";
+import type { IUserRepository } from "./interfaces/IUserRepository.ts";
 
 export default class UserRepository implements IUserRepository {
 
