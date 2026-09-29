@@ -12,7 +12,7 @@
     "url": "git+https://github.com/Rafaelcf1999/workshop-git.git"
   },
   "keywords": [],
-  "type": "commonjs",
+  "type": "module",
   "bugs": {
     "url": "https://github.com/Rafaelcf1999/workshop-git/issues"
   },
