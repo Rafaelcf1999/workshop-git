@@ -26,8 +26,10 @@ export default class LibraryService {
                 }
                 this.books.save(book);
             }
-        } catch (error: any) {
-            console.error(error.message);
+        } catch (error: unknown) {
+            if (error instanceof Error) {
+                console.error(error.message);
+            }
         }
     }
 
@@ -44,8 +46,10 @@ export default class LibraryService {
                 }
                 this.users.save(user);
             }
-        } catch (error: any) {
-            console.error(error.message);
+        } catch (error: unknown) {
+            if (error instanceof Error) {
+                console.error(error.message);
+            }
         }
     }
 
@@ -65,8 +69,10 @@ export default class LibraryService {
 
             const loan = new Loan(userId, bookId);
             this.loans.save(loan);
-        } catch (error: any) {
-            console.error(error.message);
+        } catch (error: unknown) {
+            if (error instanceof Error) {
+                console.error(error.message);
+            }
         }
     }
 
@@ -93,8 +99,10 @@ export default class LibraryService {
             book.increase();
             this.loans.remove(userId, bookId);
             
-        } catch (error: any) {
-            console.error(error.message);
+        } catch (error: unknown) {
+            if (error instanceof Error) {
+                console.error(error.message);
+            }
         }
     }
 
@@ -108,8 +116,10 @@ export default class LibraryService {
             }
 
             return results;
-        } catch (error: any) {
-            console.error(error.message);
+        } catch (error: unknown) {
+            if (error instanceof Error) {
+                console.error(error.message);
+            }
             return [];
         }
     }
