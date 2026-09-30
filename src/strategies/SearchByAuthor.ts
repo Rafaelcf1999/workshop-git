@@ -1,7 +1,7 @@
 import { Book } from "../entities/Book";
-import { SearcheStrategy } from "./SearchStrategy";
+import { SearchStrategy } from "./SearchStrategy";
 
-export class SearchByAuthor implements SearcheStrategy {
+export class SearchByAuthor implements SearchStrategy {
 
     constructor(private readonly author: string) {}
 

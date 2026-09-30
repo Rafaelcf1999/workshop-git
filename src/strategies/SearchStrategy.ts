@@ -1,5 +1,5 @@
 import { Book } from "../entities/Book";
 
-export interface SearcheStrategy {
+export interface SearchStrategy {
     search(book: Book[]): Book[];
 }
