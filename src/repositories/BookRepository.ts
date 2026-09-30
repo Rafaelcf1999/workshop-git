@@ -1,5 +1,5 @@
-import { Book } from "../entities/Book";
-import { IBookRepository } from "./interfaces/IBookRepository";
+import type { Book } from "../entities/Book.ts";
+import type { IBookRepository } from "./interfaces/IBookRepository.ts";
 
 export class BookRepository implements IBookRepository {
 

@@ -1,5 +1,5 @@
-import { Loan } from "../entities/Loan";
-import { ILoanRepository } from "./interfaces/ILoanRepository";
+import type { Loan } from "../entities/Loan.ts";
+import type { ILoanRepository } from "./interfaces/ILoanRepository.ts";
 
 export class LoanRepository implements ILoanRepository {
 

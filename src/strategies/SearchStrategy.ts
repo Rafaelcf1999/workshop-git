@@ -1,4 +1,4 @@
-import { Book } from "../entities/Book";
+import type { Book } from "../entities/Book.ts";
 
 export interface SearchStrategy {
     search(book: Book[]): Book[];

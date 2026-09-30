@@ -1,5 +1,5 @@
-import { Book } from "../entities/Book";
-import { SearchStrategy } from "./SearchStrategy";
+import type { Book } from "../entities/Book.ts";
+import type { SearchStrategy } from "./SearchStrategy.ts";
 
 export class SearchByCategory implements SearchStrategy {
   constructor(private readonly category: string) {}
