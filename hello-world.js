@@ -1,31 +1,86 @@
-console.log("Hello World");
-const numero = 3;
-let dia;
+const dia = 4;
 
-switch (numero) {
+switch (dia) {
   case 1:
-    dia = "Domingo";
+    console.log("Domingo");
     break;
   case 2:
-    dia = "Segunda-feira";
+    console.log("Segunda-Feira");
     break;
   case 3:
-    dia = "Terça-feira";
+    console.log("Terça-Feira");
     break;
   case 4:
-    dia = "Quarta-feira";
+    console.log("Quarta-Feira");
     break;
   case 5:
-    dia = "Quinta-feira";
+    console.log("Quinta-Feira");
     break;
   case 6:
-    dia = "Sexta-feira";
+    console.log("Sexta-Feira");
     break;
   case 7:
-    dia = "Sábado";
+    console.log("Sábado-Feira");
     break;
   default:
-    dia = "Número inválido";
+    console.log("Valor inválido! (somente 1-7 são válidos)");
 }
 
-console.log(dia);
+console.log("\n");
+
+///////////////////////////////////////////////////////////////////////
+
+for (let i = 1; i <= 10; i++) {
+  for (let j = 1; j <= 10; j++) {
+    console.log(`${i} x ${j} = ${i * j}`);
+  }
+}
+
+console.log("\n");
+
+///////////////////////////////////////////////////////////////////////
+
+const tabuada = 7;
+let i = 1;
+
+while (i <= 10) {
+  console.log(`${tabuada} x ${i} = ${tabuada * i}`);
+  i++;
+}
+
+console.log("\n");
+
+///////////////////////////////////////////////////////////////////////
+
+const alunos = [
+  { nome: "Paulo", nota: 7 },
+  { nome: "Marcela", nota: 9 },
+  { nome: "João", nota: 5 },
+  { nome: "Maicom", nota: 2 },
+];
+
+for (let aluno of alunos) {
+  if (aluno.nota < 7) {
+    continue;
+  }
+  console.log(`${aluno.nome} foi aprovado(a) com a nota = ${aluno.nota}`);
+}
+
+console.log("\n");
+
+///////////////////////////////////////////////////////////////////////
+
+const usuario = {
+  nome: "Guilherme",
+  amigos: ["Paulo", "Marcela", "João", "Maicom"],
+  idade: 22,
+  empregado: true,
+};
+
+for (let chave in usuario) {
+  console.log(`${chave} = ${usuario[chave]}`);
+}
+
+console.log("\n");
+
+///////////////////////////////////////////////////////////////////////
