@@ -1,0 +1,14 @@
+{
+  "name": "desafio-bootcamp-fase1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node --experimental-transform-types src/index.ts",
+    "dev": "node --experimental-transform-types --watch src/index.ts"
+  },
+  "keywords": [],
+  "author": "Bruno Benitez Forgiarini",
+  "license": "ISC"
+}
